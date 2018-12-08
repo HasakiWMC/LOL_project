@@ -27,7 +27,7 @@ class App extends Component {
                                         <Route exact path="/" component={SummonerSearch}/>
                                         <Route exact path="/register" component={Register}/>
                                         <Route exact path="/login" component={Login}/>
-                                        <Route exact path="/summoner" component={SummonerDetail}/>
+                                        <Route exact path="/summoner/:region/:summonerName" component={SummonerDetail}/>
                                     </Switch>
                                 </div>
                             </Content>

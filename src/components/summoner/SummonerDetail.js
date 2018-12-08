@@ -18,13 +18,15 @@ class summonerDetail extends Component {
     }
 
     componentDidMount() {
-        const newSummoner = JSON.parse(localStorage.getItem("newSummoner"));
-
-        if (newSummoner == null || newSummoner["region"] === "" || newSummoner["summonerName"] === "") {
+        if (this.props.match.params.region && this.props.match.params.summonerName) {
+            const newSummoner = {
+                "region": this.props.match.params.region,
+                "summonerName": this.props.match.params.summonerName
+            };
+            this.props.searchSummoner(newSummoner);
+        } else {
             this.props.history.push("/");
         }
-        this.props.searchSummoner(newSummoner);
-
     }
 
     render() {
@@ -41,13 +43,14 @@ class summonerDetail extends Component {
                 <div>
                     <Tag><strong>S8</strong> Master</Tag>
                 </div>
-                <div style={{display:"block",marginTop:"10px"}}>
+                <div style={{display: "block", marginTop: "10px"}}>
                     {/*<div style={{*/}
-                        {/*backgroundImage:"url('http://opgg-static.akamaized.net/images/borders2/challenger.png')",*/}
-                        {/*width: "120px",*/}
-                        {/*height:"120px"*/}
+                    {/*backgroundImage:"url('http://opgg-static.akamaized.net/images/borders2/challenger.png')",*/}
+                    {/*width: "120px",*/}
+                    {/*height:"120px"*/}
                     {/*}}/>*/}
-                    <img alt="" src="http://opgg-static.akamaized.net/images/profile_icons/profileIcon6.jpg" style={{display:"block",width:"100px",height:"100px",border:0}}/>
+                    <img alt="" src="http://opgg-static.akamaized.net/images/profile_icons/profileIcon6.jpg"
+                         style={{display: "block", width: "100px", height: "100px", border: 0}}/>
 
                 </div>
             </div>
