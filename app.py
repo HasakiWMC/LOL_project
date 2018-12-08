@@ -28,6 +28,8 @@ def search_summoner():
     response = s.get(
         url=("https://%s.api.riotgames.com/lol/summoner/v3/summoners/by-name/%s?api_key=%s" % (
         region_value, summoner_name, api_key)))
+    import time
+    time.sleep(1)
     return response.text
 
 
