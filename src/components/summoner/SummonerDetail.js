@@ -66,12 +66,12 @@ class summonerDetail extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps) {
-            console.log(nextProps);
+            // console.log(nextProps);
             this.setState({isHasSearched: true});
 
-            setInterval(() => {
-                console.log(this.state.isHasSearched);
-            }, 3000)
+            // setInterval(() => {
+            //     console.log(this.state.isHasSearched);
+            // }, 3000)
         }
     }
 }
