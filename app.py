@@ -16,7 +16,7 @@ def hello_world():
 @app.route('/searchSummoner', methods=['GET'])
 def search_summoner():
     summoner_name = request.args.get("summonerName")
-    api_key = "RGAPI-06140bbd-d5ba-4074-a71d-bb0bcdc0c500"
+    api_key = "RGAPI-49d0df94-95b4-40fe-9932-f346d23486dd"
     response = s.get(
         url=("https://kr.api.riotgames.com/lol/summoner/v3/summoners/by-name/%s?api_key=%s" % (summoner_name, api_key)))
     return response.text
