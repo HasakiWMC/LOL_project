@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { PropTypes } from 'prop-types';
+import {PropTypes} from 'prop-types';
 import {Spin} from 'antd';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
@@ -9,15 +9,6 @@ import {Tag} from 'antd';
 
 
 class summonerDetail extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isHasSearched: false
-        };
-        console.log(this.state.isHasSearched);
-    }
-
     componentDidMount() {
         if (this.props.match.params.region && this.props.match.params.summonerName) {
             const newSummoner = {
@@ -31,13 +22,9 @@ class summonerDetail extends Component {
     }
 
     render() {
-        const isHasSearched = this.state.isHasSearched;
+        const {loading} = this.props.summoner;
 
-        const spinComponent = (
-            <div className="spin">
-                <Spin/>
-            </div>
-        );
+        let summonerDetailContent;
 
         const summonerDetail = (
             <div>
@@ -57,22 +44,26 @@ class summonerDetail extends Component {
             </div>
         );
 
+        if (loading) {
+            summonerDetailContent = (
+                <div className="spin">
+                    <Spin/>
+                </div>
+            )
+        } else {
+            summonerDetailContent = summonerDetail
+        }
+
 
         return (
             <div>
-                {isHasSearched ? summonerDetail : spinComponent}
+                {summonerDetailContent}
             </div>
         )
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps) {
-            // console.log(nextProps);
-            this.setState({isHasSearched: true});
-
-            // setInterval(() => {
-            //     console.log(this.state.isHasSearched);
-            // }, 3000)
         }
     }
 }
@@ -82,8 +73,8 @@ const mapStateToProps = state => ({
 });
 
 summonerDetail.propTypes = {
-  searchSummoner: PropTypes.func.isRequired,
-  summoner: PropTypes.object.isRequired
+    searchSummoner: PropTypes.func.isRequired,
+    summoner: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, {searchSummoner})(withRouter(summonerDetail));

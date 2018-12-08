@@ -27,7 +27,6 @@ class summonerSearch extends Component {
             "region": this.state.region,
             "summonerName": value
         };
-        // localStorage.setItem("newSummoner", JSON.stringify(newSummoner));
         this.props.history.push(`/summoner/${newSummoner.region}/${newSummoner.summonerName}`);
     }
 

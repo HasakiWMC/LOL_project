@@ -1,15 +1,15 @@
 import axios from 'axios';
-import {GET_ERRORS, SET_SUMMONER_DETAIL, TO_SEARCH_SUMMONER} from "./types";
+import {GET_ERRORS, SET_SUMMONER_DETAIL, SUMMONER_LOADING} from "./types";
 
 
 export const searchSummoner = (summonerData) => dispatch => {
     // 请求
-    console.log(summonerData);
+    dispatch(setSummonerLoading());
     axios.get("/api/searchSummoner", {
         params: {...summonerData}
     })
         .then(res => {
-            console.log(res.data);
+            console.log("后台返回数据：", res.data);
             dispatch(setSummonerDetail(res.data));
         })
         .catch(err =>
@@ -25,4 +25,10 @@ export const setSummonerDetail = data => {
         type: SET_SUMMONER_DETAIL,
         payload: data
     }
+};
+
+export const setSummonerLoading = () => {
+    return {
+        type: SUMMONER_LOADING
+    };
 };
