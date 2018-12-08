@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { PropTypes } from 'prop-types';
 import {Spin} from 'antd';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
@@ -79,5 +80,10 @@ class summonerDetail extends Component {
 const mapStateToProps = state => ({
     summoner: state.summoner,
 });
+
+summonerDetail.propTypes = {
+  searchSummoner: PropTypes.func.isRequired,
+  summoner: PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps, {searchSummoner})(withRouter(summonerDetail));
