@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import store from './components/store/store';
+import store from './store/store';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
