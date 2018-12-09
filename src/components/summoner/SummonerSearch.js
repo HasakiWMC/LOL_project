@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom';
 const Search = Input.Search;
 const selectDefaultValue = "Korea";
 
-class summonerSearch extends Component {
+class SummonerSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -54,4 +54,4 @@ class summonerSearch extends Component {
     }
 }
 
-export default connect(null, {})(withRouter(summonerSearch));
+export default connect(null, {})(withRouter(SummonerSearch));

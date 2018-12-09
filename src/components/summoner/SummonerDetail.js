@@ -8,7 +8,7 @@ import '../../App.css';
 import {Tag} from 'antd';
 
 
-class summonerDetail extends Component {
+class SummonerDetail extends Component {
     componentDidMount() {
         if (this.props.match.params.region && this.props.match.params.summonerName) {
             const newSummoner = {
@@ -72,9 +72,9 @@ const mapStateToProps = state => ({
     summoner: state.summoner,
 });
 
-summonerDetail.propTypes = {
+SummonerDetail.propTypes = {
     searchSummoner: PropTypes.func.isRequired,
     summoner: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, {searchSummoner})(withRouter(summonerDetail));
+export default connect(mapStateToProps, {searchSummoner})(withRouter(SummonerDetail));

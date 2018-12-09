@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import store from './store/store';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Landing from './components/layout/Landing';
+import store from './store/store';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import {Layout} from "antd";
