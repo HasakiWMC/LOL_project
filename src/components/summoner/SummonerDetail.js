@@ -5,8 +5,13 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {searchSummoner} from '../../actions/summonerActions';
 import '../../App.css';
-import {Tag} from 'antd';
+import {Tag, Tabs} from 'antd';
 
+const TabPane = Tabs.TabPane;
+
+function callback(key) {
+    console.log(key);
+}
 
 class SummonerDetail extends Component {
     componentDidMount() {
@@ -41,6 +46,133 @@ class SummonerDetail extends Component {
                          style={{display: "block", width: "100px", height: "100px", border: 0}}/>
 
                 </div>
+                <Tabs defaultActiveKey="1" onChange={callback}>
+                    <TabPane tab="综合" key="1">
+                        <div className="row">
+                            <div className="col-md-4">
+                                <ul className="list-group" style={{marginTop: "20px"}}>
+                                    <li key="1" className="list-group-item">
+                                        <h3 className="text-center text-info">段位图标胜场</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                    <li key="2" className="list-group-item">
+                                        <h3 className="text-center text-info">灵活组排信息</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <ul className="list-group" style={{marginTop: "20px"}}>
+                                    <li key="1" className="list-group-item">
+                                        <h3 className="text-center text-info">职业选手概况（如果有的话）</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <ul className="list-group" style={{marginTop: "20px"}}>
+                                    <li key="2" className="list-group-item">
+                                        <h3 className="text-center text-info">最近使用英雄</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <ul className="list-group" style={{marginTop: "20px"}}>
+                                    <li key="1" className="list-group-item">
+                                        <h3 className="text-center text-info">7日内排位胜率</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <ul className="list-group" style={{marginTop: "20px"}}>
+                                    <li key="1" className="list-group-item">
+                                        <h3 className="text-center text-info">最近和谁玩过（最近20场比赛）</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div className="col-md-8">
+                                <ul className="list-group" style={{marginTop: "20px"}}>
+                                    <li key="1" className="list-group-item">
+                                        <h3 className="text-center text-info">排位图表信息</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <ul className="list-group" style={{marginTop: "20px"}}>
+                                    <li key="1" className="list-group-item">
+                                        <h3 className="text-center text-info">提示信息</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <ul className="list-group" style={{marginTop: "20px"}}>
+                                    <li key="1" className="list-group-item">
+                                        <h3 className="text-center text-info">排位比赛场次信息</h3>
+                                        <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </TabPane>
+                    <TabPane tab="英雄" key="2">Content of Tab Pane 2</TabPane>
+                    <TabPane tab="战区" key="3">Content of Tab Pane 3</TabPane>
+                </Tabs>
             </div>
         );
 
