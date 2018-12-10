@@ -1,4 +1,4 @@
-import {SET_SUMMONER_DETAIL, SUMMONER_LOADING} from '../actions/types';
+import {SET_SUMMONER_DETAIL, SET_SUMMONER_INPUT_ERR, SUMMONER_LOADING} from '../actions/types';
 
 const initialState = {
     summoner: {},
@@ -18,6 +18,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 loading: true
+            };
+        case SET_SUMMONER_INPUT_ERR:
+            return {
+                ...state,
+                loading: false
             };
         default:
             return state;

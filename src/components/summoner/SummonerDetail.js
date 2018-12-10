@@ -20,9 +20,9 @@ class SummonerDetail extends Component {
                 "region": this.props.match.params.region,
                 "summonerName": this.props.match.params.summonerName
             };
-            this.props.searchSummoner(newSummoner);
+            this.props.searchSummoner(newSummoner,this.props.history);
         } else {
-            this.props.history.push("/");
+            this.props.history.push("/summoner/inputErr");
         }
     }
 
