@@ -25,11 +25,13 @@ class SummonerSearch extends Component {
     }
 
     onSearch(value) {
-        const newSummoner = {
-            "region": this.state.region,
-            "summonerName": value
-        };
-        this.props.history.push(`/summoner/${newSummoner.region}/${newSummoner.summonerName}`);
+        if (value !== "") {
+            const newSummoner = {
+                "region": this.state.region,
+                "summonerName": value
+            };
+            this.props.history.push(`/summoner/${newSummoner.region}/${newSummoner.summonerName}`);
+        }
     }
 
     render() {
@@ -50,7 +52,7 @@ class SummonerSearch extends Component {
             />
         );
 
-        const { getFieldDecorator } = this.props.form;
+        const {getFieldDecorator} = this.props.form;
 
         return (
             <div>
@@ -60,11 +62,13 @@ class SummonerSearch extends Component {
                         <FormItem>
                             {
                                 getFieldDecorator('summonerName', {
-                                    rules: [{
-                                        required: true,
-                                        pattern: new RegExp(/^[\w .]+$/, "g"),
-                                        message: "请输入正确的召唤师名称，只能包含字母、数字、空格、“.”和“_”"
-                                    }],
+                                    rules: [
+                                        {
+                                            required: true,
+                                            pattern: new RegExp(/^[\w .]+$/, "g"),
+                                            message: "请输入正确的召唤师名称，只能包含字母、数字、空格、\".\"和\"_\""
+                                        }
+                                    ],
                                 })(searchInput)
                             }
                         </FormItem>
