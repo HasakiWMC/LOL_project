@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-from apps.restapi.summoner import Summoner
+import apps.restapi.summoner
 
 
-class Routes:
-    @staticmethod
-    def ini_routes(application):
-        application.add_url_rule('/searchSummoner', view_func=Summoner.as_view('searchSummoner'))
+def ini_routes(application):
+    application.add_url_rule('/searchSummoner',
+                             view_func=apps.restapi.summoner.SearchSummonerAPI.as_view('searchSummoner'))

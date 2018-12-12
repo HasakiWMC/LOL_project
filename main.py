@@ -2,11 +2,11 @@
 # -*- coding:utf-8 -*-
 
 from flask import Flask
-from apps.routes import Routes
+import apps.routes
 
 LOLApp = Flask(__name__)
 
-Routes.ini_routes(LOLApp)
+apps.routes.ini_routes(LOLApp)
 
 if __name__ == '__main__':
     LOLApp.run()

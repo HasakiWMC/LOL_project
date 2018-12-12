@@ -7,7 +7,7 @@
 """
 import re
 
-from apps.common.const import RetCode
+from apps.common.retcode import RetCode
 from apps.common.exception import LOLException
 
 
