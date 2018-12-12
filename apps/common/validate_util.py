@@ -9,6 +9,7 @@ import re
 
 from apps.common.retcode import RetCode
 from apps.common.exception import LOLException
+from apps.common.const import RegExp, Constant
 
 
 class ValidateUtils:
@@ -21,6 +22,7 @@ class ValidateUtils:
 
     @staticmethod
     def validate_summoner_input(region, summoner_name):
-        pattern = '^[\w .]+$'
-        if not ValidateUtils.validate_reg_exp(pattern, summoner_name) or summoner_name == "":
-            raise LOLException(RetCode.RET_CODE_SUMMONER_INPUT_ERROR, "wrong summoner name")
+        if not ValidateUtils.validate_reg_exp(RegExp.PATTERN_SUMMONER, summoner_name) or summoner_name == "":
+            raise LOLException(RetCode.RET_CODE_SUMMONER_INPUT_ERROR, "wrong summoner name: \"%s\"" % summoner_name)
+        if region not in Constant.REGIONAL_ENDPOINTS:
+            raise LOLException(RetCode.RET_CODE_SUMMONER_INPUT_ERROR, "wrong summoner region: \"%s\"" % region)
