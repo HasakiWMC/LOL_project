@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom';
 const Search = Input.Search;
 const FormItem = Form.Item;
 
-const selectDefaultValue = "Korea";
+const selectDefaultValue = "KR";
 
 class SummonerSearch extends Component {
     constructor(props) {
@@ -37,8 +37,17 @@ class SummonerSearch extends Component {
     render() {
         const selectBefore = (
             <Select defaultValue={selectDefaultValue} style={{width: "120px"}} onChange={this.onSelectChange}>
-                <Select.Option value="Korea">Korea</Select.Option>
-                <Select.Option value="Europe West">Europe West</Select.Option>
+                <Select.Option value="KR">Korea</Select.Option>
+                <Select.Option value="JP">Japan</Select.Option>
+                <Select.Option value="NA">North America</Select.Option>
+                <Select.Option value="EUW">Europe West</Select.Option>
+                <Select.Option value="EUNE">Europe Nordic & East</Select.Option>
+                <Select.Option value="OCE">Oceania</Select.Option>
+                <Select.Option value="BR">Brazil</Select.Option>
+                <Select.Option value="LAS">LAS</Select.Option>
+                <Select.Option value="LAN">LAN</Select.Option>
+                <Select.Option value="RU">Russia</Select.Option>
+                <Select.Option value="TR">Turkey</Select.Option>
             </Select>
         );
 
