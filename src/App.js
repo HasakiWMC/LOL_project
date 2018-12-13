@@ -8,7 +8,7 @@ import {Layout} from "antd";
 import LayoutHeader from "./components/layout/Header";
 import LayoutFooter from "./components/layout/Footer";
 import SummonerSearch from "./components/summoner/SummonerSearch";
-import SummonerDetail from "./components/summoner/SummonerDetail";
+import SummonerDetail from "./components/summonerDetail/SummonerDetail";
 import SummonerInputErr from "./components/summoner/SummonerInputErr";
 
 const {Content} = Layout;

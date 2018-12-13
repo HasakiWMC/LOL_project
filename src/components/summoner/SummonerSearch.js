@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Input, Select, Form} from 'antd';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+
+import {Input, Select, Form} from 'antd';
 
 const Search = Input.Search;
 const FormItem = Form.Item;

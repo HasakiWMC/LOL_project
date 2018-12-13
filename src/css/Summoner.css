@@ -1,0 +1,82 @@
+.MostChampionContent {
+    border-spacing: 5px;
+    margin-top: -15px;
+}
+
+.ChampionBox {
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid #cdd2d2;
+    color: #879292;
+    text-align: center;
+}
+
+.ChampionBox > .Face {
+    display: table-cell;
+    width: 60px;
+    padding: 5px 0 0 0;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.ChampionBox > .Face > .ChampionImage {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.ChampionBox > .ChampionInfo {
+    display: table-cell;
+    width: 85px;
+    text-align: left;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+.ChampionBox > .ChampionInfo > .ChampionName {
+    width: 70px;
+    color: #555e5e;
+    font-weight: bold;
+    font-size: 13px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ChampionBox > .ChampionInfo > .ChampionMinionKill {
+    margin-top: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.ChampionBox > .PersonalKDA {
+    display: table-cell;
+    line-height: 1.8;
+    vertical-align: middle;
+}
+
+.ChampionBox > .PersonalKDA > .KDA {
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.ChampionBox > .PersonalKDA > .KDAEach {
+    font-size: 12px;
+    color: #879292;
+    white-space: nowrap;
+}
+
+.ChampionBox > .Played {
+    display: table-cell;
+    width: 70px;
+    line-height: 1.8;
+    vertical-align: middle;
+}
+
+.ChampionBox > .PersonalKDA > .KDA.green {
+    color: #2daf7f;
+}
+
+
+

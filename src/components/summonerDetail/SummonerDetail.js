@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import {PropTypes} from 'prop-types';
-import {Spin} from 'antd';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import {PropTypes} from 'prop-types';
+
+import MostChampion from './MostChampion'
+
 import {searchSummoner} from '../../actions/summonerActions';
+import {Tag, Tabs, Button, Spin} from 'antd';
 import '../../App.css';
-import {Tag, Tabs} from 'antd';
+import '../../css/Summoner.css';
 
 const TabPane = Tabs.TabPane;
 
@@ -20,7 +23,7 @@ class SummonerDetail extends Component {
                 "region": this.props.match.params.region,
                 "summonerName": this.props.match.params.summonerName
             };
-            this.props.searchSummoner(newSummoner,this.props.history);
+            this.props.searchSummoner(newSummoner, this.props.history);
         } else {
             this.props.history.push("/summoner/inputErr");
         }
@@ -62,7 +65,7 @@ class SummonerDetail extends Component {
                                     <li key="2" className="list-group-item">
                                         <h3 className="text-center text-info">灵活组排信息</h3>
                                         <p>
-                                            <span>
+                                            <span>排位图表信息
                                                 <strong>1111111111</strong>
                                             </span>
                                         </p>
@@ -82,32 +85,7 @@ class SummonerDetail extends Component {
 
                                 <ul className="list-group" style={{marginTop: "20px"}}>
                                     <li key="2" className="list-group-item">
-                                        <h3 className="text-center text-info">最近使用英雄</h3>
-                                        <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                        </p>
-                                        <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                        </p>
-                                        <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                        </p>
-                                        <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                        </p>
-                                        <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                        </p>
+                                        <MostChampion/>
                                     </li>
                                 </ul>
 
@@ -135,38 +113,112 @@ class SummonerDetail extends Component {
                             </div>
 
                             <div className="col-md-8">
-                                <ul className="list-group" style={{marginTop: "20px"}}>
-                                    <li key="1" className="list-group-item">
-                                        <h3 className="text-center text-info">排位图表信息</h3>
-                                        <p>
+                                <Tabs defaultActiveKey="1" onChange={callback}>
+                                    <TabPane tab="全部" key="1">
+                                        <ul className="list-group" style={{marginTop: "-17px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">排位图表信息</h3>
+                                                <p>
                                             <span>
                                                 <strong>1111111111</strong>
                                             </span>
-                                        </p>
-                                    </li>
-                                </ul>
+                                                </p>
+                                            </li>
+                                        </ul>
 
-                                <ul className="list-group" style={{marginTop: "20px"}}>
-                                    <li key="1" className="list-group-item">
-                                        <h3 className="text-center text-info">提示信息</h3>
-                                        <p>
+                                        <ul className="list-group" style={{marginTop: "20px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">提示信息</h3>
+                                                <p>
                                             <span>
                                                 <strong>1111111111</strong>
                                             </span>
-                                        </p>
-                                    </li>
-                                </ul>
+                                                </p>
+                                            </li>
+                                        </ul>
 
-                                <ul className="list-group" style={{marginTop: "20px"}}>
-                                    <li key="1" className="list-group-item">
-                                        <h3 className="text-center text-info">排位比赛场次信息</h3>
-                                        <p>
+                                        <ul className="list-group" style={{marginTop: "20px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">排位比赛场次信息</h3>
+                                                <p>
                                             <span>
                                                 <strong>1111111111</strong>
                                             </span>
-                                        </p>
-                                    </li>
-                                </ul>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </TabPane>
+
+                                    <TabPane tab="单独排位赛" key="2">
+                                        <ul className="list-group" style={{marginTop: "-17px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">排位图表信息</h3>
+                                                <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                        <ul className="list-group" style={{marginTop: "20px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">提示信息</h3>
+                                                <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                        <ul className="list-group" style={{marginTop: "20px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">排位比赛场次信息</h3>
+                                                <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </TabPane>
+
+                                    <TabPane tab="Ranked Flex" key="3">
+                                        <ul className="list-group" style={{marginTop: "-17px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">排位图表信息</h3>
+                                                <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                        <ul className="list-group" style={{marginTop: "20px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">提示信息</h3>
+                                                <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                                </p>
+                                            </li>
+                                        </ul>
+
+                                        <ul className="list-group" style={{marginTop: "20px"}}>
+                                            <li key="1" className="list-group-item">
+                                                <h3 className="text-center text-info">排位比赛场次信息</h3>
+                                                <p>
+                                            <span>
+                                                <strong>1111111111</strong>
+                                            </span>
+                                                </p>
+                                            </li>
+                                        </ul>
+                                    </TabPane>
+                                </Tabs>
                             </div>
                         </div>
                     </TabPane>
