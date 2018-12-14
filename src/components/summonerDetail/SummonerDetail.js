@@ -3,12 +3,15 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {PropTypes} from 'prop-types';
 
-import MostChampion from './MostChampion'
+import MostChampionTabs from './MostChampionTabs';
+import GameList from "./GameList";
 
 import {searchSummoner} from '../../actions/summonerActions';
 import {Tag, Tabs, Button, Spin} from 'antd';
 import '../../App.css';
 import '../../css/Summoner.css';
+import '../../css/Sprite.css'
+
 
 const TabPane = Tabs.TabPane;
 
@@ -85,7 +88,7 @@ class SummonerDetail extends Component {
 
                                 <ul className="list-group" style={{marginTop: "20px"}}>
                                     <li key="2" className="list-group-item">
-                                        <MostChampion/>
+                                        <MostChampionTabs/>
                                     </li>
                                 </ul>
 
@@ -137,16 +140,9 @@ class SummonerDetail extends Component {
                                             </li>
                                         </ul>
 
-                                        <ul className="list-group" style={{marginTop: "20px"}}>
-                                            <li key="1" className="list-group-item">
-                                                <h3 className="text-center text-info">排位比赛场次信息</h3>
-                                                <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                                </p>
-                                            </li>
-                                        </ul>
+                                        <div style={{marginTop: "20px"}}>
+                                            <GameList/>
+                                        </div>
                                     </TabPane>
 
                                     <TabPane tab="单独排位赛" key="2">
@@ -172,16 +168,9 @@ class SummonerDetail extends Component {
                                             </li>
                                         </ul>
 
-                                        <ul className="list-group" style={{marginTop: "20px"}}>
-                                            <li key="1" className="list-group-item">
-                                                <h3 className="text-center text-info">排位比赛场次信息</h3>
-                                                <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                                </p>
-                                            </li>
-                                        </ul>
+                                        <div style={{marginTop: "20px"}}>
+                                            <GameList/>
+                                        </div>
                                     </TabPane>
 
                                     <TabPane tab="Ranked Flex" key="3">
@@ -207,16 +196,9 @@ class SummonerDetail extends Component {
                                             </li>
                                         </ul>
 
-                                        <ul className="list-group" style={{marginTop: "20px"}}>
-                                            <li key="1" className="list-group-item">
-                                                <h3 className="text-center text-info">排位比赛场次信息</h3>
-                                                <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                                </p>
-                                            </li>
-                                        </ul>
+                                        <div style={{marginTop: "20px"}}>
+                                            <GameList/>
+                                        </div>
                                     </TabPane>
                                 </Tabs>
                             </div>

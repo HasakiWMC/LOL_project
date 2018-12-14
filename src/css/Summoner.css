@@ -1,3 +1,4 @@
+/*Most Champion 使用最多英雄  start =====================================*/
 .MostChampionContent {
     border-spacing: 5px;
     margin-top: -15px;
@@ -75,13 +76,350 @@
 }
 
 .ChampionBox > .PersonalKDA > .KDA.green {
-    color: rgb(136, 212, 178);
+    color: #2daf7f;
 }
 
 .ChampionBox > .PersonalKDA > .KDA.orange {
-    color: rgb(240, 185, 87);
+    color: #e19205;
 }
 
 .ChampionBox > .Played > .Played.red, .ChampionBox > .Played > .WinRatio.red {
-    color: rgb(204, 126, 118);
+    color: #c6443e;
 }
+
+/*Most Champion 使用最多英雄  end =====================================*/
+
+/*GameItemList 游戏列表 start =====================================*/
+.GameItemList{
+    padding: 0;
+}
+
+.GameItemWrap{
+    margin-top: 20px;
+}
+
+.GameItem.Win > .Content {
+    table-layout: fixed;
+    background-color: #a3cfec;
+    border-color: #99b9cf;
+}
+
+.GameItem > .Content {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #cdd2d2;
+}
+
+.GameItem > .Content > .Items {
+    font-size: 0;
+}
+
+.GameItem > .Content > .GameStats {
+    width: 13%;
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    line-height: 16px;
+}
+
+.GameItem > .Content > div {
+    display: table-cell;
+    height: 96px;
+    vertical-align: middle;
+}
+
+.GameItem > .Content > .GameStats > .GameType {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.GameItem.Win > .Content > .GameStats > .Bar {
+    background: #99b9cf;
+}
+
+.GameItem > .Content > .GameStats > .Bar {
+    display: block;
+    width: 27px;
+    margin: 5px auto;
+    height: 2px;
+    background: #cdd2d2;
+}
+
+.GameItem.Win > .Content > .GameStats > .GameResult {
+    color: #1a78ae;
+}
+
+.GameItem > .Content > .GameStats > .GameResult {
+    font-weight: bold;
+}
+
+.GameItem > .Content > .GameSettingInfo {
+    width: 15%;
+    font-size: 0;
+}
+
+.GameItem > .Content > .GameSettingInfo > .ChampionImage {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    vertical-align: middle;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.GameItem > .Content > .GameSettingInfo > .SummonerSpell {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10%;
+}
+
+.GameItem > .Content > .GameSettingInfo > .SummonerSpell > .Spell {
+    display: block;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.GameItem > .Content > .GameSettingInfo > .Runes {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5%;
+}
+
+.GameItem > .Content > .GameSettingInfo > .Runes > .Rune {
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+}
+
+.GameItem > .Content > .GameSettingInfo > .ChampionName {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #555;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.GameItem > .Content > .GameSettingInfo > .ChampionName a {
+    color: #555;
+}
+
+.GameItem > .Content > .KDA {
+    font-size: 11px;
+    text-align: center;
+    width: 10%;
+}
+
+.GameItem > .Content > div {
+    display: table-cell;
+    height: 96px;
+    vertical-align: middle;
+}
+
+.GameItem > .Content > .KDA > .KDA {
+    color: #879292;
+    font-size: 15px;
+    white-space: nowrap;
+}
+
+.GameItem > .Content > .KDA > .KDA > .Kill, .GameItem > .Content > .KDA > .KDA > .Death, .GameItem > .Content > .KDA > .KDA > .Assist {
+    font-weight: bold;
+}
+
+.GameItem > .Content > .KDA > .KDA > .Kill, .GameItem > .Content > .KDA > .KDA > .Assist {
+    color: #555e5e;
+}
+
+.GameItem > .Content > .KDA > .KDA > .Death {
+    color: #c6443e;
+}
+
+.GameItem > .Content > .KDA > .KDARatio {
+    color: #555e5e;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.GameItem > .Content > .KDA > .KDARatio .KDARatio {
+    color: #353a3a;
+}
+
+.GameItem > .Content > .KDA > .MultiKill {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 10px;
+    color: #f2f2f2;
+}
+
+.GameItem > .Content > .KDA > .MultiKill > .Kill {
+    display: inline-block;
+    background: #ee5a52;
+    border: 1px solid #c6443e;
+    border-radius: 15px;
+    padding: 2px 5px;
+    line-height: 1;
+}
+
+.GameItem > .Content > .Stats {
+    width: 13%;
+    font-size: 11px;
+    text-align: center;
+    line-height: 18px;
+    color: #555e5e;
+}
+
+.GameItem > .Content > .Stats > .CKRate {
+    color: #c6443e;
+}
+
+.GameItem > .Content > .Items {
+    font-size: 0;
+    width: 18%;
+}
+
+.GameItem > .Content > .Items .ItemList {
+    width: 96px;
+    margin: 0 auto;
+}
+
+.GameItem.Win > .Content > .Items > .ItemList > .Item {
+    background-color: #99b9cf;
+}
+
+.GameItem > .Content > .Items .Item {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
+    margin-top: 2px;
+    margin-right: 2px;
+    overflow: hidden;
+}
+
+.GameItem > .Content > .Items .Button {
+    margin-top: 2px;
+    border: none;
+    padding: 0;
+    background: none;
+    width: 22px;
+    height: 22px;
+}
+
+.GameItem > .Content > .Items .Button .On {
+    display: none;
+}
+
+.GameItem > .Content > .Items .Button .Off {
+    display: block;
+}
+
+.GameItem > .Content > .Items .Button img {
+    width: 100%;
+}
+
+.GameItem > .Content > .Items .Trinket {
+    margin-top: 7px;
+    color: #353a3a;
+    line-height: 13px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.GameItem > .Content > .Items .Trinket img {
+    vertical-align: middle;
+    width: 16px;
+}
+
+.GameItem > .Content > .FollowPlayers {
+    width: 22%;
+    font-size: 0;
+}
+
+.GameItem > .Content > .FollowPlayers.Names > .Team {
+    float: left;
+    width: 50%;
+}
+
+.GameItem > .Content > .FollowPlayers.Names > .Team > .Summoner {
+    display: block;
+    width: 80px;
+    height: 18px;
+    margin-left: 3px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.GameItem > .Content > .FollowPlayers.Names > .Team > .Summoner > .ChampionImage {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.GameItem > .Content > .FollowPlayers.Names > .Team > .Summoner > .SummonerName {
+    display: inline-block;
+    max-width: 60px;
+    vertical-align: middle;
+    font-size: 11px;
+    color: #555;
+}
+
+.GameItem > .Content > .FollowPlayers.Names > .Team > .Summoner.Requester > .ChampionImage {
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.GameItem > .Content > .FollowPlayers.Names > .Team > .Summoner > .ChampionImage > .Image20 {
+    display: none;
+}
+
+.GameItem > .Content > .FollowPlayers.Names > .Team > .Summoner > .SummonerName > .Link {
+    color: #555;
+}
+
+.GameItem > .Content > .FollowPlayers.Names > .Team > .Summoner.Requester > .SummonerName > .Link {
+    color: #222;
+}
+
+.GameItem.Win>.Content>.StatsButton {
+    border-color: #4aa1d2;
+    background: #64b1e4;
+}
+
+.GameItem.Lose>.Content>.StatsButton {
+    border-color: #d67b77;
+    background: #e89d99;
+}
+
+.GameItem>.Content>.StatsButton .Content {
+    position: relative;
+    /*width: 300px;*/
+    height: 96px;
+}
+
+.GameItem>.Content>.StatsButton .Content .Item {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 30px;
+    height: 100%;
+}
+
+.GameItem>.Content>.StatsButton .Content .Item .Button {
+    display: block;
+    width: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.GameItem>.Content>.StatsButton .Content .Item .Button.MatchDetail {
+    height: 100%;
+}
+

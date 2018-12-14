@@ -12,7 +12,7 @@ function callback(key) {
     console.log(key);
 }
 
-class MostChampion extends Component {
+class MostChampionTabs extends Component {
     render() {
         return (
             <Tabs defaultActiveKey="1" onChange={callback}>
@@ -64,4 +64,4 @@ class MostChampion extends Component {
     }
 }
 
-export default MostChampion;
+export default MostChampionTabs;
