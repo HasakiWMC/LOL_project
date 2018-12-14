@@ -75,8 +75,13 @@
 }
 
 .ChampionBox > .PersonalKDA > .KDA.green {
-    color: #2daf7f;
+    color: rgb(136, 212, 178);
 }
 
+.ChampionBox > .PersonalKDA > .KDA.orange {
+    color: rgb(240, 185, 87);
+}
 
-
+.ChampionBox > .Played > .Played.red, .ChampionBox > .Played > .WinRatio.red {
+    color: rgb(204, 126, 118);
+}
