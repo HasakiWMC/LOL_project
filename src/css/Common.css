@@ -1,0 +1,9 @@
+.Title {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: #555e5e;
+    font-size: 15px;
+    font-weight: bold;
+    /* text-decoration: none; */
+}
