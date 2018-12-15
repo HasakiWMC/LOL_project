@@ -7,3 +7,21 @@
     font-weight: bold;
     /* text-decoration: none; */
 }
+
+.ant-collapse-content > .ant-collapse-content-box {
+    padding: 10px 0 0 0;
+}
+
+.ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active {
+    margin-left: 50px;
+    width: 150px;
+    text-align: center;
+    color: #111111;
+    font-weight: bold;
+}
+
+.ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab {
+    margin-left: 50px;
+    width: 150px;
+    text-align: center;
+}

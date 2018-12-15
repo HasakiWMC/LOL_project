@@ -102,7 +102,9 @@
 .GameItem.Win > .Content {
     table-layout: fixed;
     background-color: #a3cfec;
-    border-color: #99b9cf;
+    border: 0;
+    /*border-color: #99b9cf;*/
+    /*border-bottom: 0;*/
 }
 
 .GameItem > .Content {

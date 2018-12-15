@@ -1,14 +1,26 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import {Button} from 'antd';
+import {Button, Collapse, Tabs} from 'antd';
 
 import '../../css/Summoner.css'
+import '../../css/Common.css'
+
+const Panel = Collapse.Panel;
+const TabPane = Tabs.TabPane;
+
+function callback(key) {
+    console.log(key);
+}
+
+
+const text = "对局详情。。。。。。";
 
 class GameItem extends Component {
     render() {
         return (
-            <div className="GameItemWrap">
+            <div className="GameItemWrap list-group-item"
+                 style={{padding: 0, WebkitBorderBottomLeftRadius: "0.5em", WebkitBorderBottomRightRadius: "0.5em"}}>
                 <div className="GameItem Win  " data-summoner-id="4460427"
                      data-game-time="1544721556" data-game-id="3456429311"
                      data-game-result="win">
@@ -341,13 +353,28 @@ class GameItem extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="StatsButton">
-                            <div className="Content">
-                                <Button type="primary" style={{height: "100%", width: "100%"}}>对局详情</Button>
-                            </div>
-                        </div>
+                        {/*<div className="StatsButton">*/}
+                        {/*<div className="Content">*/}
+                        {/*/!*<Button type="primary" style={{height: "100%", width: "100%"}}>对局详情</Button>*!/*/}
+
+                        {/*</div>*/}
+                        {/*</div>*/}
                     </div>
-                    <div className="GameDetail"></div>
+                    <Collapse accordion style={{
+                        backgroundColor: "#64B1E4", border: 0, borderTopLeftRadius: 0,
+                        borderTopRightRadius: 0
+                    }}>
+                        <Panel header="对局详情" key="1" style={{border: 0}}>
+                            <div className="GameItemDetail">
+                                <Tabs onChange={callback} type="card">
+                                    <TabPane tab="综观" key="1">Content of Tab Pane 1</TabPane>
+                                    <TabPane tab="Team Analysis" key="2">Content of Tab Pane 2</TabPane>
+                                    <TabPane tab="Builds" key="3">Content of Tab Pane 3</TabPane>
+                                    <TabPane tab="etc" key="4">Content of Tab Pane 3</TabPane>
+                                </Tabs>
+                            </div>
+                        </Panel>
+                    </Collapse>
                 </div>
             </div>
         )
