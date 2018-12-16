@@ -3,7 +3,7 @@
 
 
 class Constant:
-    API_KEY = "RGAPI-0370eb7e-3ed9-4d37-a225-cf5ff63f97b1"
+    API_KEY = "RGAPI-c72c06f0-1fba-4a21-b52c-8ce040cccb2b"
     REGIONAL_ENDPOINTS = {
         "BR": "br1",
         "EUNE": "eun1",
@@ -25,7 +25,10 @@ class RegExp:
 
 
 class RoitAPI:
-    #  SUMMONER-V4
-
     # Get a summoner by summoner name.
-    API_GET_SUMMONER_BY_NAME = "/lol/summoner/v4/summoners/by-name/{summonerName}"
+    API_V3_GET_SUMMONER_BY_NAME = "/lol/summoner/v3/summoners/by-name/{summonerName}"
+    API_V4_GET_SUMMONER_BY_NAME = "/lol/summoner/v4/summoners/by-name/{summonerName}"
+
+    # Get league positions in all queues for a given summoner ID.
+    API_V3_GET_LEAGUE_POSITIONS_BY_ID = "/lol/league/v3/positions/by-summoner/{summonerId}"
+    API_V4_GET_LEAGUE_POSITIONS_BY_ID = "/lol/league/v4/positions/by-summoner/{encryptedSummonerId}"

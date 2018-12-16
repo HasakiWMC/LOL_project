@@ -14,6 +14,7 @@ s.keep_alive = False  # 关闭多余连接
 class SearchSummonerAPI(MethodView):
 
     def get(self):
+        result = ""
         try:
             region = request.args.get("region")
             summoner_name = request.args.get("summonerName")
@@ -24,18 +25,18 @@ class SearchSummonerAPI(MethodView):
             region_value = Constant.REGIONAL_ENDPOINTS[region]
 
             # todo 将此内容移到service中 ===start===
-            api_value = RoitAPI.API_GET_SUMMONER_BY_NAME.format(summonerName=summoner_name)
+            # 获取召唤师基本信息，其中id需要被后续请求用到
+            api_value = RoitAPI.API_V3_GET_SUMMONER_BY_NAME.format(summonerName=summoner_name)
 
-            request_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, Constant.API_KEY)
+            req_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, Constant.API_KEY)
 
-            print("request url = %s" % request_url)
+            print("request url = %s" % req_url)
 
-            response = s.get(url=request_url)
-
-            response_data = json.loads(response.text)
+            res = s.get(url=req_url)
 
             # 用json.loads将str转为dict
-            # print(type(response.text))  # <class 'str'>
+            response_data = json.loads(res.text)
+            # print(type(res.text))  # <class 'str'>
             # print(type(response_data))  # <class 'dict'>
 
             summoner_header = {
@@ -44,9 +45,34 @@ class SearchSummonerAPI(MethodView):
                 "summonerLevel": response_data.get('summonerLevel')
             }
 
+            summoner_id = response_data.get('id')
+
+            # 根据id获取召唤师联盟位置信息
+            api_value = RoitAPI.API_V3_GET_LEAGUE_POSITIONS_BY_ID.format(summonerId=summoner_id)
+
+            req_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, Constant.API_KEY)
+
+            print("request url = %s" % req_url)
+
+            res = s.get(url=req_url)
+
+            # 用json.loads将str转为dict
+            response_data = json.loads(res.text)
+
+            summoner_tier = {
+                "queueType": response_data[0].get('queueType'),
+                "wins": response_data[0].get('wins'),
+                "losses": response_data[0].get('losses'),
+                "leagueName": response_data[0].get('leagueName'),
+                "rank": response_data[0].get('rank'),
+                "tier": response_data[0].get('tier'),
+                "leaguePoints": response_data[0].get('leaguePoints')
+            }
+
             # SummonerDetail页面有很多数据，需要将每个模块的数据单独封装，便于前台读取
             result = {
-                "summoner_header": summoner_header
+                "summoner_header": summoner_header,
+                "summoner_tier": summoner_tier
             }
 
             # todo 将此内容移到service中 ===end===
