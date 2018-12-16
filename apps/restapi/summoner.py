@@ -59,6 +59,7 @@ class SearchSummonerAPI(MethodView):
             # 用json.loads将str转为dict
             response_data = json.loads(res.text)
 
+            # todo 查段位信息不止召唤师峡谷，先取第0个，后续要考虑其他排位形式
             summoner_tier = {
                 "queueType": response_data[0].get('queueType'),
                 "wins": response_data[0].get('wins'),
