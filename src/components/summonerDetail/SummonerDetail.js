@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import {PropTypes} from 'prop-types';
 
 import MostChampionTabs from './MostChampionTabs';
+import SummonersMostGameBox from "./SummonersMostGameBox";
 import GameList from "./GameList";
 
 import {searchSummoner} from '../../actions/summonerActions';
@@ -18,74 +19,6 @@ const TabPane = Tabs.TabPane;
 
 function callback(key) {
     console.log(key);
-}
-
-const columns = [{
-    title: '召唤师',
-    dataIndex: 'summoner',
-    sorter: (a, b) => a.summoner.length - b.summoner.length,
-}, {
-    title: '游戏',
-    dataIndex: 'game',
-    defaultSortOrder: 'descend',
-    sorter: (a, b) => a.game - b.game,
-}, {
-    title: '胜利',
-    dataIndex: 'victory',
-    sorter: (a, b) => a.victory - b.victory,
-}, {
-    title: '败',
-    dataIndex: 'defeat',
-    sorter: (a, b) => a.defeat - b.defeat,
-}, {
-    title: '胜率',
-    dataIndex: 'winRate',
-    sorter: (a, b) => {
-        let a_int = parseInt(a.winRate.split("%")[0]);
-        let b_int = parseInt(b.winRate.split("%")[0]);
-        return a_int - b_int;
-    }
-}];
-
-const data = [{
-    key: '1',
-    summoner: 'TOPMAIN',
-    game: 2,
-    victory: 2,
-    defeat: 0,
-    winRate: "100%",
-}, {
-    key: '2',
-    summoner: 'DWG Nuguri',
-    game: 2,
-    victory: 0,
-    defeat: 2,
-    winRate: "0%",
-}, {
-    key: '3',
-    summoner: 'SKT T1 Kuri',
-    game: 3,
-    victory: 3,
-    defeat: 0,
-    winRate: "100%",
-}, {
-    key: '4',
-    summoner: 'LPL noob ad',
-    game: 3,
-    victory: 2,
-    defeat: 1,
-    winRate: "67%",
-}, {
-    key: '5',
-    summoner: 'SKT T1 Cr',
-    game: 2,
-    victory: 1,
-    defeat: 1,
-    winRate: "50%",
-}];
-
-function onChange(pagination, filters, sorter) {
-    console.log('params', pagination, filters, sorter);
 }
 
 class SummonerDetail extends Component {
@@ -173,13 +106,7 @@ class SummonerDetail extends Component {
                                 </ul>
 
                                 <div className="list-group" style={{marginTop: "20px"}}>
-                                    <div className="list-group-item Title">
-                                        最近和谁玩过（最近20场比赛）
-                                    </div>
-                                    <div className="list-group-item" style={{padding: 0, borderBottom: 0}}>
-                                        <Table columns={columns} dataSource={data} onChange={onChange}
-                                               pagination={false}/>
-                                    </div>
+                                    <SummonersMostGameBox/>
                                 </div>
                             </div>
 
