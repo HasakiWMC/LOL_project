@@ -1,3 +1,99 @@
+/*SummonerHeader 召唤师头部信息  start =====================================*/
+.SummonerHeader > .Face {
+    display: inline-block;
+    width: 100px;
+    padding-left: 30px;
+    vertical-align: top;
+    margin: 30px 0 30px -10px;
+}
+
+.SummonerHeader > .Face > .ProfileIcon {
+    position: relative;
+}
+
+.SummonerHeader > .Face > .ProfileIcon > .ProfileImage {
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+
+.SummonerHeader > .Face > .ProfileIcon > .borderImage {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 120px;
+    height: 120px;
+    background: url('http://opgg-static.akamaized.net/images/borders2/challenger.png') no-repeat center bottom;
+}
+
+.SummonerHeader > .Face > .ProfileIcon > .Level {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: -10px;
+    margin-left: -8px;
+    width: 44px;
+    height: 24px;
+    padding-top: 3px;
+    box-sizing: border-box;
+    background: url(//opgg-static.akamaized.net/images/site/summoner/bg-levelbox.png);
+    background-size: 100%;
+    line-height: 17px;
+    /*font-family: Helvetica, AppleSDGothic, "Apple SD Gothic Neo", AppleGothic, Arial, Tahoma;*/
+    font-size: 14px;
+    text-align: center;
+    color: #eabd56;
+}
+
+.SummonerHeader > .Profile {
+    position: relative;
+    display: inline-block;
+    height: 100px;
+    margin: 30px 0 0 70px;
+    vertical-align: top;
+    line-height: 1.1;
+}
+
+.SummonerHeader > .Profile > .Information > .Team {
+    color: #242929;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+
+.SummonerHeader > .Profile > .Information > .Team > .Name {
+    color: #879292;
+}
+
+.SummonerHeader > .Profile > .Information > .Name {
+    color: #242929;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.SummonerHeader > .Profile > .Information > .Rank {
+    margin-bottom: 5px;
+}
+
+.SummonerHeader > .Profile > .Information > .Rank > .LadderRank > .Link {
+    color: #555e5e;
+    font-size: 11px;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+.SummonerHeader > .Profile > .LastUpdate {
+    margin-top: 5px;
+    left: 160px;
+    bottom: -18px;
+    height: 12px;
+    color: #99a2a2;
+    font-size: 11px;
+}
+
+/*SummonerHeader 召唤师头部信息  end =====================================*/
+
 /*Most Champion 使用最多英雄  start =====================================*/
 .MostChampionContent {
     border-spacing: 5px;
@@ -426,3 +522,4 @@
     height: 100%;
 }
 
+/*GameItemList 游戏列表 end =====================================*/

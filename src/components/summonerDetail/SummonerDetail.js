@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {PropTypes} from 'prop-types';
 
+import SummonerHeader from "./SummonerHeader";
 import MostChampionTabs from './MostChampionTabs';
 import SummonersMostGameBox from "./SummonersMostGameBox";
 import GameList from "./GameList";
@@ -41,19 +42,7 @@ class SummonerDetail extends Component {
 
         const summonerDetail = (
             <div>
-                <div>
-                    <Tag><strong>S8</strong> Master</Tag>
-                </div>
-                <div style={{display: "block", marginTop: "10px"}}>
-                    {/*<div style={{*/}
-                    {/*backgroundImage:"url('http://opgg-static.akamaized.net/images/borders2/challenger.png')",*/}
-                    {/*width: "120px",*/}
-                    {/*height:"120px"*/}
-                    {/*}}/>*/}
-                    <img alt="" src="http://opgg-static.akamaized.net/images/profile_icons/profileIcon6.jpg"
-                         style={{display: "block", width: "100px", height: "100px", border: 0}}/>
-
-                </div>
+                <SummonerHeader/>
                 <Tabs defaultActiveKey="1" onChange={callback}>
                     <TabPane tab="综合" key="1">
                         <div className="row">
