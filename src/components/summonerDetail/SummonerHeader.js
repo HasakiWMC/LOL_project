@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {PropTypes} from 'prop-types';
 
 import '../../css/Summoner.css'
 import {Tag, Button} from "antd";
@@ -7,8 +8,10 @@ import {Tag, Button} from "antd";
 
 class SummonerHeader extends Component {
     state = {
-        loading: false,
         iconLoading: false,
+        name: "",
+        profileIconId: 0,
+        summonerLevel: 0
     };
 
 
@@ -16,7 +19,33 @@ class SummonerHeader extends Component {
         this.setState({iconLoading: true});
     };
 
+    componentDidMount() {
+        if (this.props.profile && this.props.profile.summoner && this.props.profile.summoner.data &&
+            this.props.profile.summoner.data.summoner_header) {
+            console.log(this.props.profile.summoner.data.summoner_header);
+            this.setState({
+                name: this.props.profile.summoner.data.summoner_header.name,
+                profileIconId: this.props.profile.summoner.data.summoner_header.profileIconId,
+                summonerLevel: this.props.profile.summoner.data.summoner_header.summonerLevel,
+            });
+            // setState本身需要一点时间，如果不加延时，打印的this.state是还没setState完之前的
+            // setTimeout(() => {
+            //     console.log(this.state)
+            // }, 1000);
+
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps) {
+            console.log(nextProps)
+        }
+    }
+
     render() {
+        const profileIconSrc =
+            `//opgg-static.akamaized.net/images/profile_icons/profileIcon${this.state.profileIconId}.jpg`;
+
         return (
             <div className="SummonerHeader">
                 <div>
@@ -29,10 +58,10 @@ class SummonerHeader extends Component {
                 </div>
                 <div className="Face">
                     <div className="ProfileIcon">
-                        <div className="borderImage"/>
-                        <img src="//opgg-static.akamaized.net/images/profile_icons/profileIcon6.jpg"
+                        {/*<div className="borderImage"/>*/}
+                        <img src={profileIconSrc}
                              className="ProfileImage"/>
-                        <span className="Level tip tpd-delegation-uid-1" title="">174</span>
+                        <span className="Level tip tpd-delegation-uid-1" title="">{this.state.summonerLevel}</span>
                     </div>
                 </div>
 
@@ -42,7 +71,7 @@ class SummonerHeader extends Component {
                             SK Telecom T1
                             <span className="Name">[Faker]</span>
                         </div>
-                        <span className="Name">Hide on bush</span>
+                        <span className="Name">{this.state.name}</span>
 
                         <div className="Rank">
                             <div className="LadderRank">
@@ -73,5 +102,9 @@ class SummonerHeader extends Component {
         )
     }
 }
+
+SummonerHeader.propTypes = {
+    profile: PropTypes.object.isRequired
+};
 
 export default SummonerHeader;

@@ -42,7 +42,7 @@ class SummonerDetail extends Component {
 
         const summonerDetail = (
             <div>
-                <SummonerHeader/>
+                <SummonerHeader profile={this.props.summoner}/>
                 <Tabs defaultActiveKey="1" onChange={callback}>
                     <TabPane tab="综合" key="1">
                         <div className="row">
@@ -214,6 +214,8 @@ class SummonerDetail extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps) {
+            console.log(nextProps);
+            console.log(this.props.summoner)
         }
     }
 }
