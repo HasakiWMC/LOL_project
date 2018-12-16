@@ -3,7 +3,7 @@ from flask import request, jsonify, json
 import requests
 from apps.common.validate_util import ValidateUtils
 from apps.common.exception import LOLException
-from apps.common.const import Constant
+from apps.common.const import Constant, RoitAPI
 from apps.common.retcode import RetCode
 
 requests.adapters.DEFAULT_RETRIES = 5  # 增加重连次数
@@ -24,8 +24,9 @@ class SearchSummonerAPI(MethodView):
 
             region_value = Constant.REGIONAL_ENDPOINTS[region]
 
-            request_url = "https://%s.api.riotgames.com/lol/summoner/v3/summoners/by-name/%s?api_key=%s" % (
-                region_value, summoner_name, Constant.API_KEY)
+            api_value = RoitAPI.API_GET_SUMMONER_BY_NAME.format(summonerName=summoner_name)
+
+            request_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, Constant.API_KEY)
 
             print("request url = %s" % request_url)
 

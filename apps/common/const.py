@@ -3,7 +3,7 @@
 
 
 class Constant:
-    API_KEY = "RGAPI-489197ff-2ebc-40b9-a582-53f1f7156af7"
+    API_KEY = "RGAPI-0370eb7e-3ed9-4d37-a225-cf5ff63f97b1"
     REGIONAL_ENDPOINTS = {
         "BR": "br1",
         "EUNE": "eun1",
@@ -22,3 +22,10 @@ class Constant:
 
 class RegExp:
     PATTERN_SUMMONER = "^[\w .]+$"
+
+
+class RoitAPI:
+    #  SUMMONER-V4
+
+    # Get a summoner by summoner name.
+    API_GET_SUMMONER_BY_NAME = "/lol/summoner/v4/summoners/by-name/{summonerName}"
