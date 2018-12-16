@@ -20,9 +20,9 @@ class SummonerHeader extends Component {
     };
 
     componentDidMount() {
-        if (this.props.profile && this.props.profile.summoner && this.props.profile.summoner.data &&
+        if (this.props.profile.summoner && this.props.profile.summoner.data &&
             this.props.profile.summoner.data.summoner_header) {
-            console.log(this.props.profile.summoner.data.summoner_header);
+            console.log("summonerHeader接收数据：", this.props.profile.summoner.data.summoner_header);
             this.setState({
                 name: this.props.profile.summoner.data.summoner_header.name,
                 profileIconId: this.props.profile.summoner.data.summoner_header.profileIconId,
@@ -38,7 +38,6 @@ class SummonerHeader extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps) {
-            console.log(nextProps)
         }
     }
 

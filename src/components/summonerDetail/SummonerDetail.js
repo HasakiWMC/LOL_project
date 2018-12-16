@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom';
 import {PropTypes} from 'prop-types';
 
 import SummonerHeader from "./SummonerHeader";
+import TierBox from "./TierBox";
 import MostChampionTabs from './MostChampionTabs';
 import SummonersMostGameBox from "./SummonersMostGameBox";
 import GameList from "./GameList";
@@ -47,24 +48,9 @@ class SummonerDetail extends Component {
                     <TabPane tab="综合" key="1">
                         <div className="row">
                             <div className="col-md-4">
-                                <ul className="list-group" style={{marginTop: "20px"}}>
-                                    <li key="1" className="list-group-item">
-                                        <h3 className="text-center text-info">段位图标胜场</h3>
-                                        <p>
-                                            <span>
-                                                <strong>1111111111</strong>
-                                            </span>
-                                        </p>
-                                    </li>
-                                    <li key="2" className="list-group-item">
-                                        <h3 className="text-center text-info">灵活组排信息</h3>
-                                        <p>
-                                            <span>排位图表信息
-                                                <strong>1111111111</strong>
-                                            </span>
-                                        </p>
-                                    </li>
-                                </ul>
+                                <div className="list-group" style={{marginTop: "20px"}}>
+                                    <TierBox tier={this.props.summoner}/>
+                                </div>
 
                                 <ul className="list-group" style={{marginTop: "20px"}}>
                                     <li key="1" className="list-group-item">
@@ -214,8 +200,6 @@ class SummonerDetail extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps) {
-            console.log(nextProps);
-            console.log(this.props.summoner)
         }
     }
 }

@@ -66,7 +66,7 @@
 
 .SummonerHeader > .Profile > .Information > .Name {
     color: #242929;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     margin-right: 4px;
     vertical-align: middle;
@@ -93,6 +93,98 @@
 }
 
 /*SummonerHeader 召唤师头部信息  end =====================================*/
+
+/*Tier Box 段位信息  start =====================================*/
+.SummonerRatingMedium {
+    display: table;
+    width: 100%;
+    color: #879292;
+    position: relative;
+}
+
+.SummonerRatingMedium > .Medal {
+    display: table-cell;
+    vertical-align: middle;
+    width: 135px;
+    height: 116px;
+    text-align: center;
+}
+
+.SummonerRatingMedium > .Medal > .Image {
+    width: 104px;
+    height: 104px;
+    margin: -5px 0 -10px 0;
+}
+
+.SummonerRatingMedium > .TierRankInfo {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.SummonerRatingMedium > .TierRankInfo > .TierRank {
+    color: #1f8ecd;
+    font-size: 15px;
+}
+
+.SummonerRatingMedium > .TierRankInfo > .TierInfo > .LeaguePoints {
+    color: #555e5e;
+    font-weight: bold;
+}
+
+.SummonerRatingLine {
+    display: table;
+    width: 60%;
+    table-layout: fixed;
+}
+
+.SummonerRatingLine > .Medal {
+    display: table-cell;
+    width: 50px;
+    height: 62px;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+.SummonerRatingLine > .TierRank {
+    display: table-cell;
+    width: 65px;
+    color: #555e5e;
+    font-size: 11px;
+    vertical-align: middle;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.SummonerRatingLine > .TierRank > .TierRank.unranked {
+    color: #879292;
+}
+
+.SummonerRatingLine > .TierRank > .TierRank {
+    color: #1f8ecd;
+    font-size: 12px;
+}
+
+.SummonerRatingLine > .TypeTeam {
+    display: table-cell;
+    font-size: 11px;
+    line-height: 1.5;
+    vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.SummonerRatingLine > .TypeTeam > .StatSummaryType {
+    color: #555e5e;
+    font-weight: bold;
+}
+
+/*Tier Box 段位信息  end =====================================*/
 
 /*Most Champion 使用最多英雄  start =====================================*/
 .MostChampionContent {
