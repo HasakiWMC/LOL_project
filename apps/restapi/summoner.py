@@ -39,7 +39,7 @@ class SearchSummonerAPI(MethodView):
             # print(type(res.text))  # <class 'str'>
             # print(type(response_data))  # <class 'dict'>
 
-            summoner_header = {
+            summoner_profile = {
                 "name": response_data.get('name'),
                 "profileIconId": response_data.get('profileIconId'),
                 "summonerLevel": response_data.get('summonerLevel')
@@ -72,7 +72,7 @@ class SearchSummonerAPI(MethodView):
 
             # SummonerDetail页面有很多数据，需要将每个模块的数据单独封装，便于前台读取
             result = {
-                "summoner_header": summoner_header,
+                "summoner_profile": summoner_profile,
                 "summoner_tier": summoner_tier
             }
 
