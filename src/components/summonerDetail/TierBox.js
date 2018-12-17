@@ -32,6 +32,9 @@ class TierBox extends Component {
     }
 
     render() {
+        // todo 是否需要搞国际化，影响后续写法
+        // todo 图标路径需要拼接，前提需要知道所有的链接地址，以及unranked的情况
+        // todo 段位名称需要国际化吗？中文英文应该都可以，如果只需要英文根据"tier"做首字母大写即可
         const winRate = parseInt(100 * this.state.wins / (this.state.wins + this.state.losses));
 
         return (
