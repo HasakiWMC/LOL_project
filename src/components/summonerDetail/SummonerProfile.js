@@ -6,7 +6,7 @@ import '../../css/Summoner.css'
 import {Tag, Button} from "antd";
 
 
-class SummonerHeader extends Component {
+class SummonerProfile extends Component {
     state = {
         iconLoading: false,
         name: "",
@@ -20,13 +20,12 @@ class SummonerHeader extends Component {
     };
 
     componentDidMount() {
-        if (this.props.profile.summoner && this.props.profile.summoner.data &&
-            this.props.profile.summoner.data.summoner_header) {
-            console.log("summonerHeader接收数据：", this.props.profile.summoner.data.summoner_header);
+        if (this.props.profile) {
+            console.log("summonerProfile接收数据：", this.props.profile);
             this.setState({
-                name: this.props.profile.summoner.data.summoner_header.name,
-                profileIconId: this.props.profile.summoner.data.summoner_header.profileIconId,
-                summonerLevel: this.props.profile.summoner.data.summoner_header.summonerLevel,
+                name: this.props.profile.name,
+                profileIconId: this.props.profile.profileIconId,
+                summonerLevel: this.props.profile.summonerLevel,
             });
             // setState本身需要一点时间，如果不加延时，打印的this.state是还没setState完之前的
             // setTimeout(() => {
@@ -102,8 +101,8 @@ class SummonerHeader extends Component {
     }
 }
 
-SummonerHeader.propTypes = {
+SummonerProfile.propTypes = {
     profile: PropTypes.object.isRequired
 };
 
-export default SummonerHeader;
+export default SummonerProfile;

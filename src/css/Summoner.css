@@ -1,4 +1,4 @@
-/*SummonerHeader 召唤师头部信息  start =====================================*/
+/*SummonerProfile 召唤师头部信息  start =====================================*/
 .SummonerHeader > .Face {
     display: inline-block;
     width: 100px;
@@ -92,7 +92,7 @@
     font-size: 11px;
 }
 
-/*SummonerHeader 召唤师头部信息  end =====================================*/
+/*SummonerProfile 召唤师头部信息  end =====================================*/
 
 /*Tier Box 段位信息  start =====================================*/
 .SummonerRatingMedium {

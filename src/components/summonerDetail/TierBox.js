@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 
 import '../../css/Summoner.css'
 import {PropTypes} from "prop-types";
-import SummonerHeader from "./SummonerHeader";
 
 
 class TierBox extends Component {
@@ -18,17 +17,16 @@ class TierBox extends Component {
     };
 
     componentDidMount() {
-        if (this.props.tier.summoner && this.props.tier.summoner.data &&
-            this.props.tier.summoner.data.summoner_tier) {
-            console.log("TierBox接收数据：", this.props.tier.summoner.data.summoner_tier);
+        if (this.props.tier) {
+            console.log("TierBox接收数据：", this.props.tier);
             this.setState({
-                queueType: this.props.tier.summoner.data.summoner_tier.queueType,
-                wins: this.props.tier.summoner.data.summoner_tier.wins,
-                losses: this.props.tier.summoner.data.summoner_tier.losses,
-                leagueName: this.props.tier.summoner.data.summoner_tier.leagueName,
-                rank: this.props.tier.summoner.data.summoner_tier.rank,
-                tier: this.props.tier.summoner.data.summoner_tier.tier,
-                leaguePoints: this.props.tier.summoner.data.summoner_tier.leaguePoints,
+                queueType: this.props.tier.queueType,
+                wins: this.props.tier.wins,
+                losses: this.props.tier.losses,
+                leagueName: this.props.tier.leagueName,
+                rank: this.props.tier.rank,
+                tier: this.props.tier.tier,
+                leaguePoints: this.props.tier.leaguePoints,
             });
         }
     }

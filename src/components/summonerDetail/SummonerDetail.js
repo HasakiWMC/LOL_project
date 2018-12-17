@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {PropTypes} from 'prop-types';
 
-import SummonerHeader from "./SummonerHeader";
+import SummonerProfile from "./SummonerProfile";
 import TierBox from "./TierBox";
 import MostChampionTabs from './MostChampionTabs';
 import SummonersMostGameBox from "./SummonersMostGameBox";
@@ -39,17 +39,25 @@ class SummonerDetail extends Component {
     render() {
         const {loading} = this.props.summoner;
 
-        let summonerDetailContent;
+        let profileProps = (this.props.summoner.summoner && this.props.summoner.summoner.data &&
+            this.props.summoner.summoner.data.summoner_profile)
+            ? this.props.summoner.summoner.data.summoner_profile
+            : {};
+
+        let tierProps = (this.props.summoner.summoner && this.props.summoner.summoner.data &&
+            this.props.summoner.summoner.data.summoner_tier)
+            ? this.props.summoner.summoner.data.summoner_tier
+            : {};
 
         const summonerDetail = (
             <div>
-                <SummonerHeader profile={this.props.summoner}/>
+                <SummonerProfile profile={profileProps}/>
                 <Tabs defaultActiveKey="1" onChange={callback}>
                     <TabPane tab="综合" key="1">
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="list-group" style={{marginTop: "20px"}}>
-                                    <TierBox tier={this.props.summoner}/>
+                                    <TierBox tier={tierProps}/>
                                 </div>
 
                                 <ul className="list-group" style={{marginTop: "20px"}}>
@@ -179,6 +187,8 @@ class SummonerDetail extends Component {
                 </Tabs>
             </div>
         );
+
+        let summonerDetailContent;
 
         if (loading) {
             summonerDetailContent = (
