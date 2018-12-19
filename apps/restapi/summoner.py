@@ -23,8 +23,7 @@ class SearchSummonerAPI(MethodView):
 
         except LOLException as ex:
             print("错误码 = %s，错误描述 = %s" % (ex.get_err_code(), ex.get_err_desc()))
-            if ex.get_err_code() == 1000:
-                return jsonify({"retCode": RetCode.RET_CODE_SUMMONER_INPUT_ERROR})
+            return jsonify({"retCode": ex.get_err_code()})
 
         except Exception as ex:
             print(ex)
