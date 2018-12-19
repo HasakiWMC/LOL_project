@@ -3,6 +3,8 @@
 import requests
 from flask import json
 
+from apps.common.exception import LOLException
+from apps.common.retcode import RetCode
 from apps.common.validate_util import ValidateUtils
 from apps.common.const import Constant, RoitAPI
 
@@ -20,12 +22,18 @@ class SummonerService:
         ValidateUtils.validate_summoner_input(region, summoner_name)
         region_value = Constant.REGIONAL_ENDPOINTS[region]
         # 获取召唤师基本信息，其中id需要被后续请求用到
-        api_value = RoitAPI.API_V3_GET_SUMMONER_BY_NAME.format(summonerName=summoner_name)
+        api_value = RoitAPI.API_V4_GET_SUMMONER_BY_NAME.format(summonerName=summoner_name)
         req_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, Constant.API_KEY)
         print("request url = %s" % req_url)
         res = s.get(url=req_url)
         # 用json.loads将str转为dict
         response_data = json.loads(res.text)
+        if response_data and response_data.get("status"):
+            status = response_data.get("status")
+            message = status.get("message")
+            status_code = status.get("status_code")
+            if message == "Forbidden" and status_code == 403:
+                raise LOLException(RetCode.RET_CODE_API_KEY_EXPIRED_ERROR, "your api key has expired")
         # print(type(res.text))  # <class 'str'>
         # print(type(response_data))  # <class 'dict'>
         summoner_profile = {
@@ -35,7 +43,7 @@ class SummonerService:
         }
         summoner_id = response_data.get('id')
         # 根据id获取召唤师联盟位置信息
-        api_value = RoitAPI.API_V3_GET_LEAGUE_POSITIONS_BY_ID.format(summonerId=summoner_id)
+        api_value = RoitAPI.API_V4_GET_LEAGUE_POSITIONS_BY_ID.format(encryptedSummonerId=summoner_id)
         req_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, Constant.API_KEY)
         print("request url = %s" % req_url)
         res = s.get(url=req_url)
