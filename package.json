@@ -22,6 +22,7 @@
   "scripts": {
     "server": "webpack-dev-server --config config/webpack.dev.js",
     "build-dev": "webpack --config config/webpack.dev.js --mode=development",
+    "build-pro": "webpack --config config/webpack.pro.js --mode=development",
     "lint": "eslint --ext .js src/components"
   },
   "eslintConfig": {

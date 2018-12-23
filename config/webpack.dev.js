@@ -74,28 +74,29 @@ module.exports = {
             filename: "[name].css",
             chunkFilename: "[id].css"
         }),
-        // new CopyWebpackPlugin([
-        //     // {
-        //     // from:__dirname+'/public/index.html',//打包的静态资源目录地址
-        //     // to:'./index.html' //打包到dist下面的public
-        //     // },
-        //     // {
-        //     //     from:__dirname+'/src/assets/favicon.ico',//打包的静态资源目录地址
-        //     //     to:'./assets/favicon.ico' //打包到dist下面的public
-        //     // },
-        //     {
-        //         from: __dirname + '/../src/assets/logo.svg',//打包的静态资源目录地址
-        //         to: './assets/logo.svg' //打包到dist下面的public
-        //     },
-        //     {
-        //         from: __dirname + '/../public/manifest.json',//打包的静态资源目录地址
-        //         to: './config/manifest.json' //打包到dist下面的public
-        //     }
-        // ]),
+        new CopyWebpackPlugin([
+            // {   //nginx需要放到dist/assets目录下，仅放dist目录不能显示图标
+            //     from: __dirname + '/../src/assets/favicon.ico',//打包的静态资源目录地址
+            //     to: './assets/favicon.ico' //打包到dist下面的assets
+            // },
+            // {
+            //     from: __dirname + '/public/index.html',//打包的静态资源目录地址
+            //     to: './index.html' //打包到dist下面的public
+            // },
+            // {
+            //     from: __dirname + '/../src/assets/logo.svg',//打包的静态资源目录地址
+            //     to: './assets/logo.svg' //打包到dist下面的public
+            // },
+            // {
+            //     from: __dirname + '/../public/manifest.json',//打包的静态资源目录地址
+            //     to: './config/manifest.json' //打包到dist下面的public
+            // }
+        ]),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: 'public/index.html',
             inject: true,
+            //开发过程中指定的favicon
             favicon: 'src/assets/favicon.ico'
         }),
     ],
