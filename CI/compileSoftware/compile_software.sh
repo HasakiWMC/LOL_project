@@ -8,7 +8,9 @@ COMPILE_TMP=${COMPILE_ROOT}/compile_tmp
 
 SOFTWARE_HOME=${COMPILE_ROOT}/compile_tmp/software
 
-NGINX_COMPILE_HOME=${SOFTWARE_HOME}/nginx
+NGINX_COMPILE_HOME=${SOFTWARE_HOME}/../nginx
+
+RELEASE_HOME=${PROJECT_HOME}/release
 
 LOG_ERROR_FILE="${COMPILE_TMP}/compile_err.log"
 LOG_INFO_FILE="${COMPILE_TMP}/compile_info.log"
@@ -160,19 +162,17 @@ function install_python_module() {
 function install_nginx() {
     mkdir -p ${NGINX_COMPILE_HOME}
     cd ${COMPILE_TMP}
-    tar -zxvf zlib-1.2.11.tar.gz -C ${NGINX_COMPILE_HOME}
-    tar -zxvf openssl-1.0.2o.tar.gz -C ${NGINX_COMPILE_HOME}
-    tar -zxvf pcre-8.42.tar.gz -C ${NGINX_COMPILE_HOME}
-    tar -zxvf nginx-1.14.0.tar.gz -C ${NGINX_COMPILE_HOME}
+    tar -zxvf zlib-1.2.11.tar.gz -C ${NGINX_COMPILE_HOME} > "${LOG_INFO_FILE}" 2>> "${LOG_ERROR_FILE}"
+    tar -zxvf openssl-1.0.2o.tar.gz -C ${NGINX_COMPILE_HOME} > "${LOG_INFO_FILE}" 2>> "${LOG_ERROR_FILE}"
+    tar -zxvf pcre-8.42.tar.gz -C ${NGINX_COMPILE_HOME} > "${LOG_INFO_FILE}" 2>> "${LOG_ERROR_FILE}"
+    tar -zxvf nginx-1.14.0.tar.gz -C ${NGINX_COMPILE_HOME} > "${LOG_INFO_FILE}" 2>> "${LOG_ERROR_FILE}"
     cd ${NGINX_COMPILE_HOME}/nginx-1.14.0
     ./configure --prefix=../nginx/ --with-openssl=../openssl-1.0.2o --with-pcre=../pcre-8.42 --with-zlib=../zlib-1.2.11 --with-http_auth_request_module  > "${LOG_INFO_FILE}" 2>> "${LOG_ERROR_FILE}"
     make > "${LOG_INFO_FILE}" 2>> "${LOG_ERROR_FILE}"
     make install > "${LOG_INFO_FILE}" 2>> "${LOG_ERROR_FILE}"
-    cd ${NGINX_COMPILE_HOME}
-    rm -rf nginx-1.14.0
-    rm -rf openssl-1.0.2o
-    rm -rf pcre-8.42
-    rm -rf zlib-1.2.11
+
+    mkdir -p ${SOFTWARE_HOME}/nginx
+    cp ${NGINX_COMPILE_HOME}/nginx/sbin/nginx  ${SOFTWARE_HOME}/nginx/
 }
 
 
@@ -200,3 +200,16 @@ install_zlib
 install_python
 install_python_module
 install_nginx
+
+mkdir ${RELEASE_HOME}
+
+
+cd ${COMPILE_TMP}
+
+# tgz 压缩率比zip高
+tar -zcvf release_software.tar.gz software/ > "${LOG_INFO_FILE}" 2>> "${LOG_ERROR_FILE}"
+cp release_software.tar.gz ${RELEASE_HOME}/
+
+
+#zip -r release_software.zip software/
+#cp release_software.zip ${RELEASE_HOME}/
