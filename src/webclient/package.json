@@ -1,0 +1,58 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.10.9",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.3",
+    "classnames": "latest",
+    "jwt-decode": "^2.2.0",
+    "prop-types": "latest",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "umi": "^2.2.7",
+    "umi-plugin-react": "^1.2.3"
+  },
+  "scripts": {
+    "server": "webpack-dev-server --config config/webpack.dev.js",
+    "build-dev": "webpack --config config/webpack.dev.js --mode=development",
+    "build-pro": "webpack --config config/webpack.pro.js --mode=development",
+    "lint": "eslint --ext .js src/components"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-import": "^1.11.0",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.10.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.5",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
+  }
+}
