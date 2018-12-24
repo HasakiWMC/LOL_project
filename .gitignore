@@ -1,3 +1,4 @@
 .idea
 __pycache__
 CI/compileSoftware/compile_tmp
+release
