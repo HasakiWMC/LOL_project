@@ -5,24 +5,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    //打包环境： 开发&生产
+    //打包环境： 生产
     mode: 'development',
     devtool: 'source-map',
-    //本地服务器
-    devServer: {
-        port: 9000,
-        proxy: {
-            '/api/**': {
-                target: 'http://localhost:5000/',
-                pathRewrite: {'^/api': ''},
-                secure: false, // 接受 运行在 https 上的服务
-                changeOrigin: true
-            }
-        },
-        contentBase: "dist",        //本地服务器所加载的页面所在的目录
-        historyApiFallback: true,   //不跳转
-        overlay: true,              //出现错误不光在控制台，在页面也会显示
-    },
     entry: {
         main: "./src/index.js"
     },
