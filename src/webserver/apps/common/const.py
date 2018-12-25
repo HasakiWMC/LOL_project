@@ -3,7 +3,6 @@
 
 
 class Constant:
-    API_KEY = "XXXXXXXXXXXXXXXXXXXXXXXXX"
     REGIONAL_ENDPOINTS = {
         "BR": "br1",
         "EUNE": "eun1",

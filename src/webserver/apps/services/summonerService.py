@@ -7,6 +7,7 @@ from apps.common.exception import LOLException
 from apps.common.retcode import RetCode
 from apps.common.validate_util import ValidateUtils
 from apps.common.const import Constant, RoitAPI
+from apps.common.private_const import PrivateConstant
 
 # todo 这里的s是进来的所有用户都用同一个？怎么高并发？
 requests.adapters.DEFAULT_RETRIES = 5  # 增加重连次数
@@ -23,7 +24,7 @@ class SummonerService:
         region_value = Constant.REGIONAL_ENDPOINTS[region]
         # 获取召唤师基本信息，其中id需要被后续请求用到
         api_value = RoitAPI.API_V4_GET_SUMMONER_BY_NAME.format(summonerName=summoner_name)
-        req_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, Constant.API_KEY)
+        req_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, PrivateConstant.API_KEY)
         print("request url = %s" % req_url)
         res = s.get(url=req_url)
         # 用json.loads将str转为dict
@@ -44,7 +45,7 @@ class SummonerService:
         summoner_id = response_data.get('id')
         # 根据id获取召唤师联盟位置信息
         api_value = RoitAPI.API_V4_GET_LEAGUE_POSITIONS_BY_ID.format(encryptedSummonerId=summoner_id)
-        req_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, Constant.API_KEY)
+        req_url = "https://%s.api.riotgames.com%s?api_key=%s" % (region_value, api_value, PrivateConstant.API_KEY)
         print("request url = %s" % req_url)
         res = s.get(url=req_url)
         # 用json.loads将str转为dict
