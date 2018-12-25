@@ -25,6 +25,9 @@ bash ${CURRENT_PATH}/build_web.sh
 
 mv software LOL/
 
+# todo 把python源码编译成pyc have some problem
+#${RELEASE_PATH}/LOL/software/bin/python3  ${CURRENT_PATH}/compile_pyc.py
+
 cp ${CURRENT_PATH}/install.sh  ${RELEASE_PATH}/
 
 

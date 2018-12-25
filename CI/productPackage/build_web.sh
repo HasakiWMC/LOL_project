@@ -18,6 +18,7 @@ cp ${RELEASE_PATH}/software/bin/uwsgi  ${RELEASE_PATH}/LOL/webserver/
 
 
 #######copy webclient#######
+# need node 8
 cd ${PROJECT_HOME}/src/webclient
 npm run build-pro
 cp -r dist ${RELEASE_PATH}/LOL/
