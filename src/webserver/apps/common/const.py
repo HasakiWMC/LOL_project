@@ -3,7 +3,7 @@
 
 
 class Constant:
-    API_KEY = "RGAPI-27309e61-5c50-4671-be27-5d00001611c6"
+    API_KEY = "RGAPI-15dbeb10-8ecb-4870-b93b-a195731c3e39"
     REGIONAL_ENDPOINTS = {
         "BR": "br1",
         "EUNE": "eun1",
