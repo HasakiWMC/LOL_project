@@ -6,20 +6,20 @@ PROJECT_HOME=${CURRENT_PATH}/../../
 
 RELEASE_PATH=${PROJECT_HOME}/release
 
-if [[ ! -f ${RELEASE_PATH}/release_software.tar.gz ]];then
+LIB_PATH=${PROJECT_HOME}/lib
+
+if [[ ! -f ${LIB_PATH}/release_software.tar.gz ]];then
 {
-    echo "release_software.tar.gz not exist!"
+    echo "${LIB_PATH}/release_software.tar.gz not exist!"
     exit 100
 }
 fi
 
+rm -rf ${RELEASE_PATH}/*
+
 cd ${RELEASE_PATH}
 
-rm -rf LOL/
-rm -rf install.sh
-rm -rf LOL_WEB.tar.gz
-
-tar -zxvf release_software.tar.gz -C ./ > /dev/null
+tar -zxvf ${LIB_PATH}/release_software.tar.gz -C ./ > /dev/null
 
 bash ${CURRENT_PATH}/build_web.sh
 
