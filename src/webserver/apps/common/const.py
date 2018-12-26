@@ -23,13 +23,9 @@ class RegExp:
     PATTERN_SUMMONER = "^[\w .]+$"
 
 
-class RoitAPI:
-    # V3 API——19年1月Riot将弃用
-    # Get a summoner by summoner name.
-    API_V3_GET_SUMMONER_BY_NAME = "/lol/summoner/v3/summoners/by-name/{summonerName}"
-    # Get league positions in all queues for a given summoner ID.
-    API_V3_GET_LEAGUE_POSITIONS_BY_ID = "/lol/league/v3/positions/by-summoner/{summonerId}"
-
+class RiotAPI:
     # V4 API
+    # Get a summoner by summoner name.
     API_V4_GET_SUMMONER_BY_NAME = "/lol/summoner/v4/summoners/by-name/{summonerName}"
+    # Get league positions in all queues for a given summoner ID.
     API_V4_GET_LEAGUE_POSITIONS_BY_ID = "/lol/league/v4/positions/by-summoner/{encryptedSummonerId}"
