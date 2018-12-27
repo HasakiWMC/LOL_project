@@ -105,7 +105,7 @@
 .SummonerRatingMedium > .Medal {
     display: table-cell;
     vertical-align: middle;
-    width: 135px;
+    width: 40%;
     height: 116px;
     text-align: center;
 }
@@ -122,6 +122,7 @@
     font-size: 15px;
     line-height: 1.5;
     text-align: left;
+    width: 60%;
 }
 
 .SummonerRatingMedium > .TierRankInfo > .TierRank {
@@ -136,13 +137,13 @@
 
 .SummonerRatingLine {
     display: table;
-    width: 60%;
+    width: 100%;
     table-layout: fixed;
 }
 
 .SummonerRatingLine > .Medal {
     display: table-cell;
-    width: 50px;
+    width: 20%;
     height: 62px;
     vertical-align: middle;
     padding-left: 10px;
@@ -150,7 +151,7 @@
 
 .SummonerRatingLine > .TierRank {
     display: table-cell;
-    width: 65px;
+    width: 20%;
     color: #555e5e;
     font-size: 11px;
     vertical-align: middle;
@@ -172,6 +173,7 @@
     display: table-cell;
     font-size: 11px;
     line-height: 1.5;
+    width: 40%;
     vertical-align: middle;
     text-align: center;
     overflow: hidden;
@@ -179,8 +181,24 @@
     white-space: nowrap;
 }
 
+.SummonerRatingLine>.Medal>.Image {
+    width: 50px;
+    height: 50px;
+    margin: -5px 0 -10px 0;
+}
+
 .SummonerRatingLine > .TypeTeam > .StatSummaryType {
     color: #555e5e;
+    font-weight: bold;
+}
+
+.SummonerRatingLine > .WinLose {
+    display: table-cell;
+    width: 20%;
+    font-size: 11px;
+    line-height: 1.5;
+    vertical-align: middle;
+    text-align: center;
     font-weight: bold;
 }
 
