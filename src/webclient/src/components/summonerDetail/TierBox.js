@@ -99,25 +99,20 @@ class TierBox extends Component {
 
     render() {
         // todo 是否需要搞国际化，影响后续写法
-        // todo 图标路径需要拼接，前提需要知道所有的链接地址，以及unranked的情况
-        // todo 段位名称需要国际化吗？中文英文应该都可以，如果只需要英文根据"tier"做首字母大写即可
         const soloWinRate = this.state.RANKED_SOLO_5x5
             ? parseInt(100 * this.state.RANKED_SOLO_5x5.wins / (this.state.RANKED_SOLO_5x5.wins + this.state.RANKED_SOLO_5x5.losses))
             : null;
 
-        // todo 需要判断是否存在段位，并且无段位需要显示unranked图标，其他信息都不显示
         const soloTierImg = this.state.RANKED_SOLO_5x5
             ? this.state.RANKED_SOLO_5x5.tier.toLowerCase() + "_" + rankRoman2Int[this.state.RANKED_SOLO_5x5.rank]
             : "default";
 
         const soloTierImgSrc = "//opgg-static.akamaized.net/images/medals/" + soloTierImg + ".png";
 
-        // todo 继续完善灵活组排信息
         const flexWinRate = this.state.RANKED_FLEX_SR
             ? parseInt(100 * this.state.RANKED_FLEX_SR.wins / (this.state.RANKED_FLEX_SR.wins + this.state.RANKED_FLEX_SR.losses))
             : null;
 
-        // todo 需要判断是否存在段位，并且无段位需要显示unranked图标，其他信息都不显示
         const flexTierImg = this.state.RANKED_FLEX_SR
             ? this.state.RANKED_FLEX_SR.tier.toLowerCase() + "_" + rankRoman2Int[this.state.RANKED_FLEX_SR.rank]
             : "default";
