@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+import sys
+import traceback
 
 from flask.views import MethodView
 from flask import request, jsonify
@@ -26,7 +28,9 @@ class SearchSummonerAPI(MethodView):
             return jsonify({"retCode": ex.get_err_code()})
 
         except Exception as ex:
-            print(ex)
-            return jsonify({"retCode": RetCode.RET_CODE_SYSTEM_ERROR})
+            # todo 用logger记录日志并打印栈
+            # print(ex)
+            traceback.print_exc()
+            return jsonify({"retCode": RetCode.RET_SYSTEM_ERROR})
         print("返回数据 = %s" % result)
         return jsonify({"retCode": 0, "data": result})
