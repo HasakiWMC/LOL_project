@@ -57,7 +57,6 @@ class SummonerService:
         res = s.get(url=req_url)
         # 用json.loads将str转为dict
         response_data = json.loads(res.text)
-        # todo 查段位信息不止召唤师峡谷，先取第0个，后续要考虑其他排位形式
 
         if len(response_data) > 0:
             summoner_tier = {}
