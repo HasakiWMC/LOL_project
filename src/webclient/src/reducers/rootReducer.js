@@ -9,5 +9,5 @@ import summonerReducer from './summonerReducer';
 export default combineReducers({
     auth: authReducer,
     errors: errorReducer,
-    summoner: summonerReducer,
+    summoner_detail: summonerReducer,
 })

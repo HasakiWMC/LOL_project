@@ -32,22 +32,30 @@ class SummonerDetail extends Component {
             };
             this.props.searchSummoner(newSummoner, this.props.history);
         } else {
-            this.props.history.push("/summoner/inputErr");
+            this.props.history.push("/summoner_detail/inputErr");
         }
     }
 
     render() {
-        const {loading} = this.props.summoner;
+        const {loading} = this.props.summoner_detail;
 
-        let profileProps = (this.props.summoner.summoner && this.props.summoner.summoner.data &&
-            this.props.summoner.summoner.data.summoner_profile)
-            ? this.props.summoner.summoner.data.summoner_profile
+        let profileProps = (this.props.summoner_detail.summoner_detail
+            && this.props.summoner_detail.summoner_detail.data
+            && this.props.summoner_detail.summoner_detail.data.summoner_profile)
+            ? this.props.summoner_detail.summoner_detail.data.summoner_profile
             : {};
 
-        let tierProps = (this.props.summoner.summoner && this.props.summoner.summoner.data &&
-            this.props.summoner.summoner.data.summoner_tier)
-            ? this.props.summoner.summoner.data.summoner_tier
+        let tierProps = (this.props.summoner_detail.summoner_detail
+            && this.props.summoner_detail.summoner_detail.data
+            && this.props.summoner_detail.summoner_detail.data.summoner_tier)
+            ? this.props.summoner_detail.summoner_detail.data.summoner_tier
             : {};
+
+        let matchesProps = (this.props.summoner_detail.summoner_detail
+            && this.props.summoner_detail.summoner_detail.data
+            && this.props.summoner_detail.summoner_detail.data.matches_detail)
+            ? this.props.summoner_detail.summoner_detail.data.matches_detail
+            : [];
 
         const summonerDetail = (
             <div>
@@ -119,7 +127,7 @@ class SummonerDetail extends Component {
                                         </ul>
 
                                         <div style={{marginTop: "20px"}}>
-                                            <GameList/>
+                                            <GameList matches={matchesProps}/>
                                         </div>
                                     </TabPane>
 
@@ -215,12 +223,12 @@ class SummonerDetail extends Component {
 }
 
 const mapStateToProps = state => ({
-    summoner: state.summoner,
+    summoner_detail: state.summoner_detail,
 });
 
 SummonerDetail.propTypes = {
     searchSummoner: PropTypes.func.isRequired,
-    summoner: PropTypes.object.isRequired
+    summoner_detail: PropTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, {searchSummoner})(withRouter(SummonerDetail));

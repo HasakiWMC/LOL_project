@@ -7,8 +7,8 @@ import {Table} from "antd";
 
 const columns = [{
     title: '召唤师',
-    dataIndex: 'summoner',
-    sorter: (a, b) => a.summoner.length - b.summoner.length,
+    dataIndex: 'summoner_detail',
+    sorter: (a, b) => a.summoner_detail.length - b.summoner_detail.length,
 }, {
     title: '游戏',
     dataIndex: 'game',
@@ -34,35 +34,35 @@ const columns = [{
 
 const data = [{
     key: '1',
-    summoner: 'TOPMAIN',
+    summoner_detail: 'TOPMAIN',
     game: 2,
     victory: 2,
     defeat: 0,
     winRate: "100%",
 }, {
     key: '2',
-    summoner: 'DWG Nuguri',
+    summoner_detail: 'DWG Nuguri',
     game: 2,
     victory: 0,
     defeat: 2,
     winRate: "0%",
 }, {
     key: '3',
-    summoner: 'SKT T1 Kuri',
+    summoner_detail: 'SKT T1 Kuri',
     game: 3,
     victory: 3,
     defeat: 0,
     winRate: "100%",
 }, {
     key: '4',
-    summoner: 'LPL noob ad',
+    summoner_detail: 'LPL noob ad',
     game: 3,
     victory: 2,
     defeat: 1,
     winRate: "67%",
 }, {
     key: '5',
-    summoner: 'SKT T1 Cr',
+    summoner_detail: 'SKT T1 Cr',
     game: 2,
     victory: 1,
     defeat: 1,

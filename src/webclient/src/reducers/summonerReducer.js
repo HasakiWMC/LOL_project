@@ -1,7 +1,7 @@
 import {SET_SUMMONER_DETAIL, SET_SUMMONER_INPUT_ERR, SUMMONER_LOADING} from '../actions/types';
 
 const initialState = {
-    summoner: {},
+    summoner_detail: {},
     loading: false
 };
 
@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
         case SET_SUMMONER_DETAIL:
             return {
                 ...state,
-                summoner: action.payload,
+                summoner_detail: action.payload,
                 loading: false
             };
         case SUMMONER_LOADING:

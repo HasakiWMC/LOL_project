@@ -9,9 +9,6 @@ import {Tag, Button} from "antd";
 class SummonerProfile extends Component {
     state = {
         iconLoading: false,
-        name: "",
-        profileIconId: 0,
-        summonerLevel: 0
     };
 
 
@@ -22,27 +19,14 @@ class SummonerProfile extends Component {
     componentDidMount() {
         if (this.props.profile) {
             console.log("summonerProfile接收数据：", this.props.profile);
-            this.setState({
-                name: this.props.profile.name,
-                profileIconId: this.props.profile.profileIconId,
-                summonerLevel: this.props.profile.summonerLevel,
-            });
-            // setState本身需要一点时间，如果不加延时，打印的this.state是还没setState完之前的
-            // setTimeout(() => {
-            //     console.log(this.state)
-            // }, 1000);
-
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps) {
         }
     }
 
     render() {
+        const {name, profileIconId, summonerLevel} = this.props.profile;
+
         const profileIconSrc =
-            `//opgg-static.akamaized.net/images/profile_icons/profileIcon${this.state.profileIconId}.jpg`;
+            `//opgg-static.akamaized.net/images/profile_icons/profileIcon${profileIconId}.jpg`;
 
         return (
             <div className="SummonerHeader">
@@ -59,7 +43,7 @@ class SummonerProfile extends Component {
                         {/*<div className="borderImage"/>*/}
                         <img src={profileIconSrc}
                              className="ProfileImage"/>
-                        <span className="Level tip tpd-delegation-uid-1" title="">{this.state.summonerLevel}</span>
+                        <span className="Level tip tpd-delegation-uid-1" title="">{summonerLevel}</span>
                     </div>
                 </div>
 
@@ -69,7 +53,7 @@ class SummonerProfile extends Component {
                             SK Telecom T1
                             <span className="Name">[Faker]</span>
                         </div>
-                        <span className="Name">{this.state.name}</span>
+                        <span className="Name">{name}</span>
 
                         <div className="Rank">
                             <div className="LadderRank">

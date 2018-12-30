@@ -9,15 +9,71 @@ import '../../css/Common.css'
 const Panel = Collapse.Panel;
 const TabPane = Tabs.TabPane;
 
+const match_queues = {
+    420: "单人排位",
+    430: "匹配模式",
+    450: "极地大乱斗"
+};
+
+const parseGameCreation = (timestamp) => {
+    return new Date(parseInt(timestamp)).toLocaleString()
+};
+
+const calGameCreationInterval = (timestamp) => {
+    const now = new Date().getTime();
+    let timeDiff = Math.floor(now - timestamp) / 1000;
+    const y = Math.floor(timeDiff / (365 * 3600 * 24));
+    timeDiff = timeDiff % (365 * 3600 * 24);
+    const m = Math.floor(timeDiff / (3600 * 24 * 30));
+    timeDiff = timeDiff % (3600 * 24 * 30);
+    const d = Math.floor(timeDiff / (3600 * 24));
+    timeDiff = timeDiff % (3600 * 24);
+    const h = Math.floor(timeDiff / 3600);
+    timeDiff = timeDiff % 3600;
+    const mm = Math.floor(timeDiff / 60);
+    if (y > 0) {
+        return y + "年前";
+    } else if (m > 0) {
+        return m + "月前";
+    } else if (d > 0) {
+        return d + "天前";
+    } else if (h > 0) {
+        return h + "小时前";
+    } else if (mm > 0) {
+        return mm + "分前";
+    }
+};
+
+const parseGameDuration = (seconds) => {
+    const h = Math.floor(seconds / 3600);
+    let timeDiff = seconds % 3600;
+    const mm = Math.floor(timeDiff / 60);
+    timeDiff = timeDiff % 60;
+    const s = timeDiff;
+    return (h > 0 ? (h + "小时") : "") + " " + mm + "分" + " " + s + "秒"
+};
+
+
 function callback(key) {
     console.log(key);
 }
 
 
-const text = "对局详情。。。。。。";
-
 class GameItem extends Component {
+
+    componentDidMount() {
+        if (this.props.game) {
+            console.log("Game接收数据：", this.props.game);
+        }
+    }
+
     render() {
+        const {
+            gameCreation, gameDuration, gameId, gameMode, gameType, gameVersion, mapId, participantIdentities,
+            participants, platformId, queueId, seasonId, teams
+        } = this.props.game;
+
+
         return (
             <div className="GameItemWrap list-group-item"
                  style={{padding: 0, WebkitBorderBottomLeftRadius: "0.5em", WebkitBorderBottomRightRadius: "0.5em"}}>
@@ -27,18 +83,19 @@ class GameItem extends Component {
                     <div className="Content">
                         <div className="GameStats">
                             <div className="GameType">
-                                单人排位
+                                {match_queues[queueId]}
                             </div>
                             <div className="TimeStamp"><span
                                 className="_timeago _timeCountAssigned tip"
                                 data-datetime="1544721556" data-type=""
                                 data-interval="60"
-                                title="2018年12月14日凌晨1点33">20小时前</span></div>
+                                title={parseGameCreation(gameCreation)}>{calGameCreationInterval(gameCreation)}</span>
+                            </div>
                             <div className="Bar"/>
                             <div className="GameResult">
                                 胜利
                             </div>
-                            <div className="GameLength">26分 17秒</div>
+                            <div className="GameLength">{parseGameDuration(gameDuration)}</div>
 
                         </div>
                         <div className="GameSettingInfo">
