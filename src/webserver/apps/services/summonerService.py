@@ -29,16 +29,23 @@ class SummonerService:
         summoner_tier = self.search_league_position_by_id()
         match_list = self.search_match_list_by_account_id()
 
+        matches_detail = []
+        for match_item in match_list.get("matches"):
+            match_item_detail = self.search_match_by_match_id(match_item.get("gameId"))
+            matches_detail.append(match_item_detail)
+
         # SummonerDetail页面有很多数据，需要将每个模块的数据单独封装，便于前台读取
         result = {
             "summoner_profile": summoner_profile,
-            "summoner_tier": summoner_tier
+            "summoner_tier": summoner_tier,
+            "match_list": match_list,
+            "matches_detail": matches_detail
         }
         return result
 
     def search_summoner_by_name(self, summoner_name):
         """
-        获取召唤师基本信息
+        根据名字获取召唤师基本信息
         :param summoner_name:
         :return: summoner_profile
         """
@@ -76,15 +83,26 @@ class SummonerService:
 
     def search_match_list_by_account_id(self):
         """
-        获取召唤师基本信息
-        :return: summoner_profile
+        根据召唤师账户id获取比赛列表
+        :return: match_list
         """
         api_value = RiotAPI.API_V4_GET_MATCH_LIST_BY_ACCOUNT_ID.format(encryptedAccountId=self.account_id)
+        query_params = {
+            "beginIndex": 0,
+            "endIndex": 3
+        }
+        response_data = self.riot_dao.send_request_api(self.region, api_value, **query_params)
+
+        match_list = response_data
+        return match_list
+
+    def search_match_by_match_id(self, game_id):
+        """
+        根据比赛id获取比赛信息
+        :return: summoner_profile
+        """
+        api_value = RiotAPI.API_V4_GET_MATCH_BY_MATCH_ID.format(matchId=game_id)
         response_data = self.riot_dao.send_request_api(self.region, api_value)
 
-        match_list = {
-            "name": response_data.get('name'),
-            "profileIconId": response_data.get('profileIconId'),
-            "summonerLevel": response_data.get('summonerLevel')
-        }
-        return match_list
+        match = response_data
+        return match

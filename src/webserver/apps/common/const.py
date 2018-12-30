@@ -35,3 +35,6 @@ class RiotAPI:
     # Get matchlist for games played on given account ID and platform ID
     # and filtered using given filter parameters, if any.
     API_V4_GET_MATCH_LIST_BY_ACCOUNT_ID = "/lol/match/v4/matchlists/by-account/{encryptedAccountId}"
+
+    # Get match by match ID.
+    API_V4_GET_MATCH_BY_MATCH_ID = "/lol/match/v4/matches/{matchId}"
