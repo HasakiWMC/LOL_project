@@ -12,6 +12,7 @@ class SummonerService:
     def __init__(self):
         self.region = ""
         self.id = ""
+        self.account_id = ""
 
     def search_summoner_detail(self, region, summoner_name):
         """
@@ -25,7 +26,8 @@ class SummonerService:
         self.region = region_value
 
         summoner_profile = self.search_summoner_by_name(summoner_name)
-        summoner_tier = self.search_league_position_by_summoner_id()
+        summoner_tier = self.search_league_position_by_id()
+        match_list = self.search_match_list_by_account_id()
 
         # SummonerDetail页面有很多数据，需要将每个模块的数据单独封装，便于前台读取
         result = {
@@ -33,35 +35,6 @@ class SummonerService:
             "summoner_tier": summoner_tier
         }
         return result
-
-    def search_league_position_by_summoner_id(self):
-        """
-        根据id获取召唤师段位信息
-        :return: summoner_tier
-        """
-        api_value = RiotAPI.API_V4_GET_LEAGUE_POSITIONS_BY_ID.format(encryptedSummonerId=self.id)
-        response_data = self.riot_dao.send_request_api(self.region, api_value)
-        summoner_tier = {}
-        if len(response_data) > 0:
-            for position_item in response_data:
-                queue_type = position_item.get("queueType")
-                wins = position_item.get("wins")
-                losses = position_item.get("losses")
-                league_name = position_item.get("leagueName")
-                rank = position_item.get("rank")
-                tier = position_item.get("tier")
-                league_points = position_item.get("leaguePoints")
-                summoner_tier_item = {
-                    "queueType": queue_type,
-                    "wins": wins,
-                    "losses": losses,
-                    "leagueName": league_name,
-                    "rank": rank,
-                    "tier": tier,
-                    "leaguePoints": league_points,
-                }
-                summoner_tier.update({queue_type: summoner_tier_item})
-        return summoner_tier
 
     def search_summoner_by_name(self, summoner_name):
         """
@@ -73,15 +46,45 @@ class SummonerService:
         ValidateUtils.validate_summoner_input(summoner_name)
 
         api_value = RiotAPI.API_V4_GET_SUMMONER_BY_NAME.format(summonerName=summoner_name)
+
         response_data = self.riot_dao.send_request_api(self.region, api_value)
 
         # id需要被后续请求用到
-        summoner_id = response_data.get('id')
-        self.id = summoner_id
+        self.id = response_data.get('id')
+        self.account_id = response_data.get('accountId')
 
-        summoner_profile = {
+        # 从riot api中取到的数据直接透传给前台
+        summoner_profile = response_data
+        return summoner_profile
+
+    def search_league_position_by_id(self):
+        """
+        根据id获取召唤师段位信息
+        :return: summoner_tier
+        """
+        api_value = RiotAPI.API_V4_GET_LEAGUE_POSITIONS_BY_ID.format(encryptedSummonerId=self.id)
+        response_data = self.riot_dao.send_request_api(self.region, api_value)
+
+        # api中内容是列表，改造成以排位模式为key，以内容为
+        summoner_tier = {}
+        if len(response_data) > 0:
+            for position_item in response_data:
+                queue_type = position_item.get("queueType")
+                summoner_tier_item = position_item
+                summoner_tier.update({queue_type: summoner_tier_item})
+        return summoner_tier
+
+    def search_match_list_by_account_id(self):
+        """
+        获取召唤师基本信息
+        :return: summoner_profile
+        """
+        api_value = RiotAPI.API_V4_GET_MATCH_LIST_BY_ACCOUNT_ID.format(encryptedAccountId=self.account_id)
+        response_data = self.riot_dao.send_request_api(self.region, api_value)
+
+        match_list = {
             "name": response_data.get('name'),
             "profileIconId": response_data.get('profileIconId'),
             "summonerLevel": response_data.get('summonerLevel')
         }
-        return summoner_profile
+        return match_list

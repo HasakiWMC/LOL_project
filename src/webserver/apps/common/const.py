@@ -25,7 +25,13 @@ class RegExp:
 
 class RiotAPI:
     # V4 API
+
     # Get a summoner by summoner name.
     API_V4_GET_SUMMONER_BY_NAME = "/lol/summoner/v4/summoners/by-name/{summonerName}"
+
     # Get league positions in all queues for a given summoner ID.
     API_V4_GET_LEAGUE_POSITIONS_BY_ID = "/lol/league/v4/positions/by-summoner/{encryptedSummonerId}"
+
+    # Get matchlist for games played on given account ID and platform ID
+    # and filtered using given filter parameters, if any.
+    API_V4_GET_MATCH_LIST_BY_ACCOUNT_ID = "/lol/match/v4/matchlists/by-account/{encryptedAccountId}"
