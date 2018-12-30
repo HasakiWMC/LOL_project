@@ -16,5 +16,14 @@ def test2():
         print(222)
 
 
+def test3():
+    condition = False
+    # if not condition:
+    #     raise AssertionError()
+    # assert condition
+    lists = ["", "", ""]
+    assert len(lists) >= 3, '列表元素个数小于3'
+
+
 if __name__ == '__main__':
-    test2()
+    test3()

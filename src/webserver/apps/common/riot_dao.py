@@ -7,8 +7,6 @@ from apps.common.exception import LOLException
 from apps.common.private_const import PrivateConstant
 
 # todo 这里的s是进来的所有用户都用同一个？怎么高并发？
-from apps.common.retcode import RetCode
-
 requests.adapters.DEFAULT_RETRIES = 5  # 增加重连次数
 s = requests.session()
 s.keep_alive = False  # 关闭多余连接

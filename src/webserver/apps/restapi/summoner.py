@@ -21,7 +21,7 @@ class SearchSummonerAPI(MethodView):
             region = request.args.get("region")
             summoner_name = request.args.get("summonerName")
 
-            result = self.summoner_service.search_summoner(region, summoner_name)
+            result = self.summoner_service.search_summoner_detail(region, summoner_name)
 
         except LOLException as ex:
             print("错误码 = %s，错误描述 = %s" % (ex.get_err_code(), ex.get_err_desc()))
