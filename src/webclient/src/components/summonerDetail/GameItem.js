@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
 
-import {Button, Collapse, Tabs} from 'antd';
+import {Collapse, Tabs} from 'antd';
 
+import {championId2Name} from "../../common/constant"
 import '../../css/Summoner.css'
 import '../../css/Common.css'
 
@@ -49,8 +49,7 @@ const parseGameDuration = (seconds) => {
     let timeDiff = seconds % 3600;
     const mm = Math.floor(timeDiff / 60);
     timeDiff = timeDiff % 60;
-    const s = timeDiff;
-    return (h > 0 ? (h + "小时") : "") + " " + mm + "分" + " " + s + "秒"
+    return (h > 0 ? (h + "小时") : "") + " " + mm + "分" + " " + timeDiff + "秒"
 };
 
 
@@ -63,8 +62,12 @@ class GameItem extends Component {
 
     componentDidMount() {
         if (this.props.game) {
-            console.log("Game接收数据：", this.props.game);
+            console.log("Game接收game数据：", this.props.game);
         }
+        if (this.props.accountId) {
+            console.log("Game接收accountId数据：", this.props.accountId);
+        }
+        console.log(championId2Name[266]);
     }
 
     render() {

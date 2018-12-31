@@ -39,23 +39,22 @@ class SummonerDetail extends Component {
     render() {
         const {loading} = this.props.summoner_detail;
 
-        let profileProps = (this.props.summoner_detail.summoner_detail
-            && this.props.summoner_detail.summoner_detail.data
-            && this.props.summoner_detail.summoner_detail.data.summoner_profile)
+        const profileProps = (this.props.summoner_detail.summoner_detail
+            && this.props.summoner_detail.summoner_detail.data)
             ? this.props.summoner_detail.summoner_detail.data.summoner_profile
             : {};
 
-        let tierProps = (this.props.summoner_detail.summoner_detail
-            && this.props.summoner_detail.summoner_detail.data
-            && this.props.summoner_detail.summoner_detail.data.summoner_tier)
+        const tierProps = (this.props.summoner_detail.summoner_detail
+            && this.props.summoner_detail.summoner_detail.data)
             ? this.props.summoner_detail.summoner_detail.data.summoner_tier
             : {};
 
-        let matchesProps = (this.props.summoner_detail.summoner_detail
-            && this.props.summoner_detail.summoner_detail.data
-            && this.props.summoner_detail.summoner_detail.data.matches_detail)
+        const matchesProps = (this.props.summoner_detail.summoner_detail
+            && this.props.summoner_detail.summoner_detail.data)
             ? this.props.summoner_detail.summoner_detail.data.matches_detail
             : [];
+
+        const accountId = profileProps ? profileProps.accountId : "";
 
         const summonerDetail = (
             <div>
@@ -127,7 +126,7 @@ class SummonerDetail extends Component {
                                         </ul>
 
                                         <div style={{marginTop: "20px"}}>
-                                            <GameList matches={matchesProps}/>
+                                            <GameList matches={matchesProps} accountId={accountId}/>
                                         </div>
                                     </TabPane>
 
