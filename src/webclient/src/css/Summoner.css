@@ -181,7 +181,7 @@
     white-space: nowrap;
 }
 
-.SummonerRatingLine>.Medal>.Image {
+.SummonerRatingLine > .Medal > .Image {
     width: 50px;
     height: 50px;
     margin: -5px 0 -10px 0;
@@ -305,12 +305,65 @@
     margin-top: 20px;
 }
 
+/*胜利战绩项*/
 .GameItem.Win > .Content {
     table-layout: fixed;
     background-color: #a3cfec;
     border: 0;
     /*border-color: #99b9cf;*/
     /*border-bottom: 0;*/
+}
+
+/*失败战绩项*/
+.GameItem.Lose > .Content {
+    table-layout: fixed;
+    background-color: #e2b6b3;
+    border: 0;
+    /*border-color: #99b9cf;*/
+    /*border-bottom: 0;*/
+}
+
+/*装备栏背景*/
+.GameItem.Win > .Content > .Items > .ItemList > .Item {
+    background-color: #8BA8BC;
+}
+
+.GameItem.Lose > .Content > .Items > .ItemList > .Item {
+    background-color: #BB9797;
+}
+
+/*"胜利"的字体颜色*/
+.GameItem.Win > .Content > .GameStats > .GameResult {
+    color: #1a78ae;
+}
+
+/*"失败"的字体颜色*/
+.GameItem.Lose > .Content > .GameStats > .GameResult {
+    color: #c6443e;
+}
+
+/*横杠背景色*/
+.GameItem.Win > .Content > .GameStats > .Bar {
+    background: #99b9cf;
+}
+
+.GameItem.Lose > .Content > .GameStats > .Bar {
+    background: #cea7a7;
+}
+
+.GameItem > .GameDetail {
+    border: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/*对局详情背景色*/
+.GameItem.Win > .GameDetail {
+    background-color: #64B1E4
+}
+
+.GameItem.Lose > .GameDetail {
+    background-color: #E89D99
 }
 
 .GameItem > .Content {
@@ -345,20 +398,12 @@
     text-overflow: ellipsis;
 }
 
-.GameItem.Win > .Content > .GameStats > .Bar {
-    background: #99b9cf;
-}
-
 .GameItem > .Content > .GameStats > .Bar {
     display: block;
     width: 27px;
     margin: 5px auto;
     height: 2px;
     background: #cdd2d2;
-}
-
-.GameItem.Win > .Content > .GameStats > .GameResult {
-    color: #1a78ae;
 }
 
 .GameItem > .Content > .GameStats > .GameResult {
@@ -418,6 +463,7 @@
 
 .GameItem > .Content > .GameSettingInfo > .ChampionName a {
     color: #555;
+    margin-left: -60px;
 }
 
 .GameItem > .Content > .KDA {
@@ -499,10 +545,6 @@
     margin: 0 auto;
 }
 
-.GameItem.Win > .Content > .Items > .ItemList > .Item {
-    background-color: #99b9cf;
-}
-
 .GameItem > .Content > .Items .Item {
     display: inline-block;
     width: 22px;
@@ -545,6 +587,7 @@
 .GameItem > .Content > .Items .Trinket img {
     vertical-align: middle;
     width: 16px;
+    margin-left: -8px;
 }
 
 .GameItem > .Content > .FollowPlayers {
