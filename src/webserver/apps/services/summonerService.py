@@ -89,7 +89,7 @@ class SummonerService:
         api_value = RiotAPI.API_V4_GET_MATCH_LIST_BY_ACCOUNT_ID.format(encryptedAccountId=self.account_id)
         query_params = {
             "beginIndex": 0,
-            "endIndex": 3
+            "endIndex": 5
         }
         response_data = self.riot_dao.send_request_api(self.region, api_value, **query_params)
 
