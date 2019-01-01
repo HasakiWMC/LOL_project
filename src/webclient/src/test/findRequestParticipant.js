@@ -1,4 +1,4 @@
-
+// const championId2Name = require('../common/constant');
 
 const accountId = "bcDNFeTGUe6rrlUSY4zJtTUcU0xoEnMfyN44ulINQg-J";
 
@@ -1709,9 +1709,34 @@ const {championId, spell1Id, spell2Id, teamId, stats} =
 
 console.log("championId = %s,spell1Id = %s, spell2Id = %s, teamId = %s", championId, spell1Id, spell2Id, teamId);
 
-const {perkPrimaryStyle, perkSubStyle} = stats;
+const {perkPrimaryStyle, perkSubStyle, kills, deaths, assists} = stats;
 console.log("perkPrimaryStyle = %s,perkSubStyle = %s", perkPrimaryStyle, perkSubStyle);
 
-const championName = championId2Name[266];
+console.log(kills, deaths, assists);
 
-console.log(championName);
+// console.log(championId2Name.championId2Name);
+
+//根据game找出10个参与者的championId和summonerName
+result = {
+    "1": {
+        championId: 1,
+        summonerName: "aaa"
+    },
+    "2": {
+        championId: 1,
+        summonerName: "aaa"
+    },
+};
+const findChampionIdSummonerNameByGame = (game) => {
+    const {participantIdentities, participants} = game;
+    const result = [];
+    participantIdentities.map((item, index) => {
+        result.push({
+            summonerName: item.player.summonerName,
+            participantId: participants[index]["participantId"]
+        })
+    });
+    return result;
+};
+
+console.log(findChampionIdSummonerNameByGame(game));
