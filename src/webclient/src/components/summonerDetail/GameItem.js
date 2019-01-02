@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Collapse, Tabs} from 'antd';
 import classnames from 'classnames';
 
-import {championId2Name, spellId2Name, runeId2Name} from "../../common/constant"
+import {championId2Name, spellId2Name, runeId2Name,match_queues} from "../../common/constant"
 import '../../css/Summoner.css'
 import '../../css/Common.css'
 
@@ -13,12 +13,6 @@ const TabPane = Tabs.TabPane;
 function callback(key) {
     console.log(key);
 }
-
-const match_queues = {
-    420: "单人排位",
-    430: "匹配模式",
-    450: "极地大乱斗"
-};
 
 const parseGameCreation = (timestamp) => {
     return new Date(parseInt(timestamp)).toLocaleString()

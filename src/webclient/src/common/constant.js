@@ -178,6 +178,12 @@ export const runeId2Name =
         '8400': 'Resolve'
     };
 
+export const match_queues = {
+    420: "单人排位",
+    430: "匹配模式",
+    440: "灵活组排",
+    450: "极地大乱斗"
+};
 
 // module.exports = {
 //     championId2Name

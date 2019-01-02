@@ -154,7 +154,9 @@ class SummonerDetail extends Component {
                                         </ul>
 
                                         <div style={{marginTop: "20px"}}>
-                                            <GameList/>
+                                            <GameList matches={matchesProps.filter((match) => {
+                                                return 420 === match.queueId
+                                            })} accountId={accountId}/>
                                         </div>
                                     </TabPane>
 
@@ -182,7 +184,9 @@ class SummonerDetail extends Component {
                                         </ul>
 
                                         <div style={{marginTop: "20px"}}>
-                                            <GameList/>
+                                            <GameList matches={matchesProps.filter((match) => {
+                                                return 440 === match.queueId
+                                            })} accountId={accountId}/>
                                         </div>
                                     </TabPane>
                                 </Tabs>
