@@ -5,6 +5,7 @@ from flask import json
 
 from apps.common.exception import LOLException
 from apps.common.private_const import PrivateConstant
+from apps.common.singleton import Singleton
 
 # todo 这里的s是进来的所有用户都用同一个？怎么高并发？
 requests.adapters.DEFAULT_RETRIES = 5  # 增加重连次数
@@ -12,7 +13,7 @@ s = requests.session()
 s.keep_alive = False  # 关闭多余连接
 
 
-class RiotDao(object):
+class RiotDao(Singleton):
     def send_request_api(self, region, api_value, **query_params):
         # todo 使用redis数据库和Token Bucket算法实现限流  https://zhuanlan.zhihu.com/p/20872901
         # todo 对两种限制流量的策略进行组合（全局），还可以对IP进行限制。

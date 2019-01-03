@@ -1,18 +1,21 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from apps.common.riot_dao import RiotDao
+from apps.common.singleton import Singleton
 from apps.common.validate_util import ValidateUtils
 from apps.common.const import Constant, RiotAPI
 
 
-class SummonerService:
-    # todo 这里初始化是否能支持高并发，是否需要改成单例模式
-    riot_dao = RiotDao()
+class SummonerService(Singleton):
+    __riot_dao = None
 
     def __init__(self):
         self.region = ""
         self.id = ""
         self.account_id = ""
+        if self.__riot_dao is not None:
+            return
+        self.__riot_dao = RiotDao()
 
     def search_summoner_detail(self, region, summoner_name):
         """
@@ -54,7 +57,7 @@ class SummonerService:
 
         api_value = RiotAPI.API_V4_GET_SUMMONER_BY_NAME.format(summonerName=summoner_name)
 
-        response_data = self.riot_dao.send_request_api(self.region, api_value)
+        response_data = self.__riot_dao.send_request_api(self.region, api_value)
 
         # id需要被后续请求用到
         self.id = response_data.get('id')
@@ -70,7 +73,7 @@ class SummonerService:
         :return: summoner_tier
         """
         api_value = RiotAPI.API_V4_GET_LEAGUE_POSITIONS_BY_ID.format(encryptedSummonerId=self.id)
-        response_data = self.riot_dao.send_request_api(self.region, api_value)
+        response_data = self.__riot_dao.send_request_api(self.region, api_value)
 
         # api中内容是列表，改造成以排位模式为key，以内容为
         summoner_tier = {}
@@ -91,7 +94,7 @@ class SummonerService:
             "beginIndex": 0,
             "endIndex": 5
         }
-        response_data = self.riot_dao.send_request_api(self.region, api_value, **query_params)
+        response_data = self.__riot_dao.send_request_api(self.region, api_value, **query_params)
 
         match_list = response_data
         return match_list
@@ -102,7 +105,7 @@ class SummonerService:
         :return: summoner_profile
         """
         api_value = RiotAPI.API_V4_GET_MATCH_BY_MATCH_ID.format(matchId=game_id)
-        response_data = self.riot_dao.send_request_api(self.region, api_value)
+        response_data = self.__riot_dao.send_request_api(self.region, api_value)
 
         match = response_data
         return match
