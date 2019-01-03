@@ -507,18 +507,44 @@
     color: #353a3a;
 }
 
-.GameItem > .Content > .KDA > .MultiKill {
+.GameItem > .Content > .KDA > .BadgeGroup > .MultiKill {
     display: inline-block;
     margin-top: 8px;
     font-size: 10px;
     color: #f2f2f2;
 }
 
-.GameItem > .Content > .KDA > .MultiKill > .Kill {
+.GameItem > .Content > .KDA > .BadgeGroup > .MultiKill > .Kill {
     display: inline-block;
     background: #ee5a52;
     border: 1px solid #c6443e;
     border-radius: 15px;
+    padding: 2px 5px;
+    line-height: 1;
+}
+
+.GameItem > .Content > .KDA > .BadgeGroup > .Badge {
+    display: inline-block;
+    color: #fff;
+    margin: 8px auto 0;
+    font-size: 10px;
+}
+
+.GameItem > .Content > .KDA > .BadgeGroup > .Badge > .MVP {
+    border-radius: 9px;
+    background-color: #e19205;
+    border: solid 1px #b88a2a;
+}
+
+.GameItem > .Content > .KDA > .BadgeGroup > .Badge > .ACE {
+    border-radius: 9px;
+    background-color: #8c51c5;
+    border: solid 1px #7f3590;
+}
+
+.GameItem > .Content > .KDA > .BadgeGroup > .Badge > .Text {
+    border-radius: 7px;
+    display: inline-block;
     padding: 2px 5px;
     line-height: 1;
 }

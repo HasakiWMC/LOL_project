@@ -30,6 +30,7 @@ class SummonerProfile extends Component {
 
         return (
             <div className="SummonerHeader">
+                /*todo 需要放入redis中记录*/
                 <div>
                     <Tag><strong>S3</strong> Diamond</Tag>
                     <Tag><strong>S4</strong> Challenger</Tag>

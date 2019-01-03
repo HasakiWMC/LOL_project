@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Collapse, Tabs} from 'antd';
 import classnames from 'classnames';
 
-import {championId2Name, spellId2Name, runeId2Name,match_queues} from "../../common/constant"
+import {championId2Name, spellId2Name, runeId2Name, match_queues} from "../../common/constant"
 import '../../css/Summoner.css'
 import '../../css/Common.css'
 
@@ -79,6 +79,8 @@ class GameItem extends Component {
     }
 
     render() {
+        //todo 如何计算MVP和ACE
+        //todo 计算击杀参与率 CS Match MMR
         const {
             gameCreation, gameDuration, gameId, gameMode, gameType, gameVersion, mapId, participantIdentities,
             participants, platformId, queueId, seasonId, teams
@@ -90,9 +92,39 @@ class GameItem extends Component {
             findRequestParticipantByParticipantId(participants, participantId);
 
         const {
-            perk0, perkSubStyle, win, kills, deaths, assists, champLevel, visionScore,
+            win, perk0, perkSubStyle, kills, deaths, assists, champLevel, visionScore,
+            doubleKills, tripleKills, quadraKills, pentaKills,
             item0, item1, item2, item3, item4, item5, item6
         } = stats;
+
+        let multiKill = "";
+        if (pentaKills > 0) {
+            multiKill = "五杀";
+        } else if (quadraKills > 0) {
+            multiKill = "四杀";
+        } else if (tripleKills > 0) {
+            multiKill = "三杀";
+        } else if (doubleKills > 0) {
+            multiKill = "双杀";
+        }
+
+        const badgeGroup = (
+            <div className="BadgeGroup">
+                {multiKill !== ""
+                    ? (
+                        <div className="MultiKill">
+                            <span className="Kill">{multiKill}</span>
+                        </div>
+                    )
+                    : null}
+
+                <div className="Badge">
+                    <span className="Text MVP">MVP</span>
+                </div>
+                <div className="Badge">
+                    <span className="Text ACE">ACE</span>
+                </div>
+            </div>);
 
         const gameResult = win ? "胜利" : "失败";
 
@@ -251,9 +283,7 @@ class GameItem extends Component {
                             <div className="KDARatio">
                                 <span className="KDARatio ">{KDA}</span> KDA
                             </div>
-                            <div className="MultiKill">
-                                <span className="Kill">双杀</span>
-                            </div>
+                            {badgeGroup}
                         </div>
                         <div className="Stats">
                             <div className="Level">
