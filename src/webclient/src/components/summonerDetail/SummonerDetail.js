@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import {PropTypes} from 'prop-types';
@@ -8,8 +9,8 @@ import TierBox from "./TierBox";
 import MostChampionTabs from './MostChampionTabs';
 import SummonersMostGameBox from "./SummonersMostGameBox";
 import GameList from "./GameList";
+import * as summonerActions from '../../actions/summonerActions';
 
-import {searchSummoner} from '../../actions/summonerActions';
 import {Tag, Tabs, Button, Spin, Table} from 'antd';
 import '../../App.css';
 import '../../css/Summoner.css';
@@ -30,7 +31,7 @@ class SummonerDetail extends Component {
                 "region": this.props.match.params.region,
                 "summonerName": this.props.match.params.summonerName
             };
-            this.props.searchSummoner(newSummoner, this.props.history);
+            this.props.summonerActions.searchSummoner(newSummoner, this.props.history);
         } else {
             this.props.history.push("/summoner_detail/inputErr");
         }
@@ -229,9 +230,13 @@ const mapStateToProps = state => ({
     summoner_detail: state.summoner_detail,
 });
 
+const mapDispatchToProps = dispatch => ({
+    summonerActions: bindActionCreators(summonerActions, dispatch)
+});
+
 SummonerDetail.propTypes = {
-    searchSummoner: PropTypes.func.isRequired,
+    summonerActions: PropTypes.object.isRequired,
     summoner_detail: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, {searchSummoner})(withRouter(SummonerDetail));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SummonerDetail));
