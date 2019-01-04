@@ -14,60 +14,72 @@ function callback(key) {
     console.log(key);
 }
 
-const parseGameCreation = (timestamp) => {
-    return new Date(parseInt(timestamp)).toLocaleString()
-};
-
-const calGameCreationInterval = (timestamp) => {
-    const now = new Date().getTime();
-    let timeDiff = Math.floor(now - timestamp) / 1000;
-    const y = Math.floor(timeDiff / (365 * 3600 * 24));
-    timeDiff = timeDiff % (365 * 3600 * 24);
-    const m = Math.floor(timeDiff / (3600 * 24 * 30));
-    timeDiff = timeDiff % (3600 * 24 * 30);
-    const d = Math.floor(timeDiff / (3600 * 24));
-    timeDiff = timeDiff % (3600 * 24);
-    const h = Math.floor(timeDiff / 3600);
-    timeDiff = timeDiff % 3600;
-    const mm = Math.floor(timeDiff / 60);
-    if (y > 0) {
-        return y + "年前";
-    } else if (m > 0) {
-        return m + "月前";
-    } else if (d > 0) {
-        return d + "天前";
-    } else if (h > 0) {
-        return h + "小时前";
-    } else if (mm > 0) {
-        return mm + "分前";
-    }
-};
-
-const parseGameDuration = (seconds) => {
-    const h = Math.floor(seconds / 3600);
-    let timeDiff = seconds % 3600;
-    const mm = Math.floor(timeDiff / 60);
-    timeDiff = timeDiff % 60;
-    return (h > 0 ? (h + "小时") : "") + " " + mm + "分" + " " + timeDiff + "秒"
-};
-
-
-//根据账户id从比赛人员基本信息中查找被查询的参与者
-const findRequestParticipantIdentityByAccountId = (participantIdentities, accountId) => {
-    return participantIdentities.find((participantIdentity) => {
-        return accountId === participantIdentity["player"]["accountId"]
-    })
-};
-
-//根据参与者id从比赛人员详细信息中查找被查询的参与者
-const findRequestParticipantByParticipantId = (participants, participantId) => {
-    return participants.find((participant) => {
-        return participantId === participant["participantId"]
-    })
-};
-
-
 class GameItem extends Component {
+
+    parseGameCreation = (timestamp) => {
+        return new Date(parseInt(timestamp)).toLocaleString()
+    };
+
+    calGameCreationInterval = (timestamp) => {
+        const now = new Date().getTime();
+        let timeDiff = Math.floor(now - timestamp) / 1000;
+        const y = Math.floor(timeDiff / (365 * 3600 * 24));
+        timeDiff = timeDiff % (365 * 3600 * 24);
+        const m = Math.floor(timeDiff / (3600 * 24 * 30));
+        timeDiff = timeDiff % (3600 * 24 * 30);
+        const d = Math.floor(timeDiff / (3600 * 24));
+        timeDiff = timeDiff % (3600 * 24);
+        const h = Math.floor(timeDiff / 3600);
+        timeDiff = timeDiff % 3600;
+        const mm = Math.floor(timeDiff / 60);
+        if (y > 0) {
+            return y + "年前";
+        } else if (m > 0) {
+            return m + "月前";
+        } else if (d > 0) {
+            return d + "天前";
+        } else if (h > 0) {
+            return h + "小时前";
+        } else if (mm > 0) {
+            return mm + "分前";
+        }
+    };
+
+    parseGameDuration = (seconds) => {
+        const h = Math.floor(seconds / 3600);
+        let timeDiff = seconds % 3600;
+        const mm = Math.floor(timeDiff / 60);
+        timeDiff = timeDiff % 60;
+        return (h > 0 ? (h + "小时") : "") + " " + mm + "分" + " " + timeDiff + "秒"
+    };
+
+
+    //根据账户id从比赛人员基本信息中查找被查询的参与者
+    findRequestParticipantIdentityByAccountId = (participantIdentities, accountId) => {
+        return participantIdentities.find((participantIdentity) => {
+            return accountId === participantIdentity["player"]["accountId"]
+        })
+    };
+
+    //根据参与者id从比赛人员详细信息中查找被查询的参与者
+    findRequestParticipantByParticipantId = (participants, participantId) => {
+        return participants.find((participant) => {
+            return participantId === participant["participantId"]
+        })
+    };
+
+    //根据比赛查找召唤师名字和英雄
+    findChampionIdSummonerNameByGame = (participantIdentities, participants) => {
+        const summonerList = [];
+        participantIdentities.map((item, index) => {
+            summonerList.push({
+                participantId: participants[index]["participantId"],
+                championId: participants[index]["championId"],
+                summonerName: item.player.summonerName,
+            })
+        });
+        return summonerList;
+    };
 
     componentDidMount() {
         if (this.props.game) {
@@ -86,10 +98,11 @@ class GameItem extends Component {
             participants, platformId, queueId, seasonId, teams
         } = this.props.game;
 
-        const {participantId} = findRequestParticipantIdentityByAccountId(participantIdentities, this.props.accountId);
+        const {participantId} =
+            this.findRequestParticipantIdentityByAccountId(participantIdentities, this.props.accountId);
 
         const {championId, spell1Id, spell2Id, teamId, stats} =
-            findRequestParticipantByParticipantId(participants, participantId);
+            this.findRequestParticipantByParticipantId(participants, participantId);
 
         const {
             win, perk0, perkSubStyle, kills, deaths, assists, champLevel, visionScore,
@@ -140,7 +153,7 @@ class GameItem extends Component {
         const opgg_prefix = "//opgg-static.akamaized.net/images/lol";
 
         const itemNode = (itemId) => (
-            <div className="Item">
+            <div className="Item" key={itemId}>
                 {itemId !== 0
                     ? (<img
                         src={`${opgg_prefix}/item/${itemId}.png`}
@@ -166,7 +179,7 @@ class GameItem extends Component {
             <div className={classnames({
                 "Summoner": true,
                 "Requester": participantId === summoner.participantId
-            })}>
+            })} key={summoner.participantId}>
                 <div className="ChampionImage">
                     <img style={{width: "16px", height: "16px"}}
                          src={`${opgg_prefix}/champion/${championId2Name[summoner.championId]["id"]}.png`}
@@ -179,19 +192,8 @@ class GameItem extends Component {
                 </div>
             </div>);
 
-        const findChampionIdSummonerNameByGame = (participantIdentities, participants) => {
-            const summonerList = [];
-            participantIdentities.map((item, index) => {
-                summonerList.push({
-                    participantId: participants[index]["participantId"],
-                    championId: participants[index]["championId"],
-                    summonerName: item.player.summonerName,
-                })
-            });
-            return summonerList;
-        };
 
-        const summonerList = findChampionIdSummonerNameByGame(participantIdentities, participants);
+        const summonerList = this.findChampionIdSummonerNameByGame(participantIdentities, participants);
 
         const team1SummonerListNode = summonerList.slice(0, 5).map((item) => {
             return summonerNode(item);
@@ -216,17 +218,19 @@ class GameItem extends Component {
                             <div className="GameType">
                                 {match_queues[queueId]}
                             </div>
-                            <div className="TimeStamp"><span
-                                className="_timeago _timeCountAssigned tip"
-                                data-datetime="1544721556" data-type=""
-                                data-interval="60"
-                                title={parseGameCreation(gameCreation)}>{calGameCreationInterval(gameCreation)}</span>
+                            <div className="TimeStamp">
+                                <span className="_timeago _timeCountAssigned tip"
+                                      data-datetime="1544721556" data-type=""
+                                      data-interval="60"
+                                      title={this.parseGameCreation(gameCreation)}>
+                                    {this.calGameCreationInterval(gameCreation)}
+                                </span>
                             </div>
                             <div className="Bar"/>
                             <div className="GameResult">
                                 {gameResult}
                             </div>
-                            <div className="GameLength">{parseGameDuration(gameDuration)}</div>
+                            <div className="GameLength">{this.parseGameDuration(gameDuration)}</div>
 
                         </div>
                         <div className="GameSettingInfo">

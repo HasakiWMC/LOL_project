@@ -1,30 +1,25 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import {rankRoman2Int} from "../../common/constant";
+
 import '../../css/Summoner.css'
 import {PropTypes} from "prop-types";
 
-const rankRoman2Int = {
-    "I": 1,
-    "II": 2,
-    "III": 3,
-    "IV": 4,
-    "V": 5
-};
-
-//tier从全大写转换为首字母大写，其余小写
-const changeTierSpell = (tier) => {
-    return tier.toLowerCase().replace(/(^)[a-z]/g, (char) => char.toUpperCase());
-};
-
-//不是王者宗师大师就显示小段位
-const displayRank = (tier, rank) => {
-    return ["CHALLENGER", "GRANDMASTER", "MASTER"].indexOf(tier) < 0
-        ? rankRoman2Int[rank]
-        : null
-};
 
 class TierBox extends Component {
+
+    //tier从全大写转换为首字母大写，其余小写
+    changeTierSpell = (tier) => {
+        return tier.toLowerCase().replace(/(^)[a-z]/g, (char) => char.toUpperCase());
+    };
+
+    //不是王者宗师大师就显示小段位
+    displayRank = (tier, rank) => {
+        return ["CHALLENGER", "GRANDMASTER", "MASTER"].indexOf(tier) < 0
+            ? rankRoman2Int[rank]
+            : null
+    };
 
     componentDidMount() {
         if (this.props.tier) {
@@ -68,8 +63,8 @@ class TierBox extends Component {
                                     <div className="TierRankInfo">
                                         <div className="TierRank">
                                             <span className="tierRank">
-                                                {changeTierSpell(RANKED_SOLO_5x5.tier)}&nbsp;
-                                                {displayRank(RANKED_SOLO_5x5.tier, RANKED_SOLO_5x5.rank)}
+                                                {this.changeTierSpell(RANKED_SOLO_5x5.tier)}&nbsp;
+                                                {this.displayRank(RANKED_SOLO_5x5.tier, RANKED_SOLO_5x5.rank)}
                                             </span>
                                         </div>
                                         <div className="TierInfo">
@@ -112,8 +107,8 @@ class TierBox extends Component {
                                     </div>
                                     <div className="TierRank">
                                         <div className="TierRank">
-                                            {changeTierSpell(RANKED_FLEX_SR.tier)}&nbsp;
-                                            {displayRank(RANKED_FLEX_SR.tier, RANKED_FLEX_SR.rank)}
+                                            {this.changeTierSpell(RANKED_FLEX_SR.tier)}&nbsp;
+                                            {this.displayRank(RANKED_FLEX_SR.tier, RANKED_FLEX_SR.rank)}
                                         </div>
                                         <div className="leaguePoints">
                                             {RANKED_FLEX_SR.leaguePoints} LP

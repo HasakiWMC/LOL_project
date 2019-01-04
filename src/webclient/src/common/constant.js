@@ -185,6 +185,14 @@ export const match_queues = {
     450: "极地大乱斗"
 };
 
+export const rankRoman2Int = {
+    "I": 1,
+    "II": 2,
+    "III": 3,
+    "IV": 4,
+    "V": 5
+};
+
 // module.exports = {
 //     championId2Name
 // };
