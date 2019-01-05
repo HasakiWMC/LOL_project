@@ -5,7 +5,7 @@ declare -a python_module_pkg=(
     "Werkzeug-0.14.1.tar.gz"        "Jinja2-2.10.tar.gz"                "Click-7.0.tar.gz"
     "Flask-1.0.2.tar.gz"            "uwsgi-2.0.17.1.tar.gz"             "urllib3-1.24.1.tar.gz"
     "certifi-2018.11.29.tar.gz"     "idna-2.8.tar.gz"                   "chardet-3.0.4.tar.gz"
-    "requests-2.21.0.tar.gz"
+    "requests-2.21.0.tar.gz"        "redis-3.0.1.tar.gz"
 )
 
 function install_zlib()
@@ -171,16 +171,46 @@ function install_nginx() {
 
 function install_redis() {
     cd ${COMPILE_TMP}
-    tar -zxvf redis-*.tar.gz
-    cd redis-*
+    tar -zxvf redis-5.0.3.tar.gz
+    cd redis-5.0.3
     make install PREFIX=${SOFTWARE_HOME}
 }
 
 source __static__.sh
 
 install_zlib
+if [[ 0 -ne $? ]]
+then
+    echo "zlib installed failed"
+    exit 1
+fi
+
 install_pcre
+if [[ 0 -ne $? ]]
+then
+    echo "pcre installed failed"
+    exit 1
+fi
+
 install_python
+if [[ 0 -ne $? ]]
+then
+    echo "python installed failed"
+    exit 1
+fi
+
 install_python_module
+
 install_nginx
+if [[ 0 -ne $? ]]
+then
+    echo "nginx installed failed"
+    exit 1
+fi
+
 install_redis
+if [[ 0 -ne $? ]]
+then
+    echo "redis installed failed"
+    exit 1
+fi

@@ -29,9 +29,10 @@ mv software LOL/
 #${RELEASE_PATH}/LOL/software/bin/python3  ${CURRENT_PATH}/compile_pyc.py
 
 cp ${CURRENT_PATH}/install.sh  ${RELEASE_PATH}/
+cp ${CURRENT_PATH}/init_redis_data.py  ${RELEASE_PATH}/
 
 
 cd ${RELEASE_PATH}
 
-tar -zcvf LOL_WEB.tar.gz LOL/ install.sh > /dev/null
+tar -zcvf LOL_WEB.tar.gz LOL/ install.sh init_redis_data.py > /dev/null
 
