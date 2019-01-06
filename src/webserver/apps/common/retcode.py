@@ -8,6 +8,9 @@ class RetCode:
     # 成功
     RET_SUCCESS = 0
 
+    # 系统繁忙,请求api过多
+    RET_SYSTEM_RATE_LIMIT_EXCEEDED = 429
+
     # 程序代码出错通用错误码
     RET_SYSTEM_ERROR = 500
 

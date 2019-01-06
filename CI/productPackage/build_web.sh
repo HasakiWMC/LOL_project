@@ -27,3 +27,6 @@ cp -r dist ${RELEASE_PATH}/LOL/
 #######copy web bin#######
 cp -r ${PROJECT_HOME}/src/bin  ${RELEASE_PATH}/LOL/
 
+
+#######copy redis#######
+cp -r ${PROJECT_HOME}/src/redis  ${RELEASE_PATH}/LOL/
