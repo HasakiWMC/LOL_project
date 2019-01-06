@@ -57,7 +57,7 @@ class RiotDao(Singleton):
         res = s.get(url=req_url, headers=headers)
         # 用json.loads将str转为dict
         response_data = json.loads(res.text)
-        print("API返回结果：%s" % response_data)
+        # print("API返回结果：%s" % response_data)
         # print(type(res.text))  # <class 'str'>
         # print(type(response_data))  # <class 'dict'>
 
@@ -120,5 +120,5 @@ class RiotDao(Singleton):
         """
 
         cmd = self.__r.register_script(lua)
-        res = cmd(keys="riot_rate_limit_dev_policy")
+        res = cmd(keys=["riot_rate_limit_dev_policy"])
         return res

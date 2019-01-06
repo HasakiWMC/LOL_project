@@ -49,3 +49,5 @@ return true
 --LRANGE riot_rate_limit_dev_policy 0 -1
 --HMGET riot_ratelimit_dev1 maxPermits lastrefilltime bucketInterval currentPermits initPermits
 --HMGET riot_ratelimit_dev2 maxPermits lastrefilltime bucketInterval currentPermits initPermits
+
+--./redis-cli --eval /opt/LOL/webserver/apps/common/ratelimit.lua riot_rate_limit_dev_policy

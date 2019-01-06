@@ -6,4 +6,4 @@ REDIS_PATH=${CURRENT_PATH}/../software/bin
 
 cd ${REDIS_PATH}
 
-./redis-server --daemonize yes
+./redis-server /opt/LOL/redis/redis.conf --daemonize yes
