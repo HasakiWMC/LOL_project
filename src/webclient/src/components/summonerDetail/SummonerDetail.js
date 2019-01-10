@@ -40,20 +40,11 @@ class SummonerDetail extends Component {
     render() {
         const {loading} = this.props.summoner_detail;
 
-        const profileProps = (this.props.summoner_detail.summoner_detail
-            && this.props.summoner_detail.summoner_detail.data)
-            ? this.props.summoner_detail.summoner_detail.data.summoner_profile
-            : {};
+        const profileProps = this.props.summoner_detail.summoner_profile || {};
 
-        const tierProps = (this.props.summoner_detail.summoner_detail
-            && this.props.summoner_detail.summoner_detail.data)
-            ? this.props.summoner_detail.summoner_detail.data.summoner_tier
-            : {};
+        const tierProps = this.props.summoner_detail.summoner_tier || {};
 
-        const matchesProps = (this.props.summoner_detail.summoner_detail
-            && this.props.summoner_detail.summoner_detail.data)
-            ? this.props.summoner_detail.summoner_detail.data.matches_detail
-            : [];
+        const matchesProps = this.props.summoner_detail.matches_detail || [];
 
         const accountId = profileProps ? profileProps.accountId : "";
 
