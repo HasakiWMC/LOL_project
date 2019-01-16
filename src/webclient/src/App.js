@@ -10,6 +10,7 @@ import LayoutFooter from "./components/layout/Footer";
 import SummonerSearch from "./components/summoner/SummonerSearch";
 import SummonerDetail from "./components/summonerDetail/SummonerDetail";
 import SummonerInputErr from "./components/summoner/SummonerInputErr";
+import ChangePwd from "./components/layout/ChangePwd";
 
 const {Content} = Layout;
 
@@ -29,6 +30,7 @@ class App extends Component {
                                         <Route exact path="/login" component={Login}/>
                                         <Route exact path="/summoner/:region/:summonerName" component={SummonerDetail}/>
                                         <Route exact path="/summoner/inputErr" component={SummonerInputErr}/>
+                                        <Route exact path="/changePwd" component={ChangePwd}/>
                                     </Switch>
                                 </div>
                             </Content>

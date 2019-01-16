@@ -1,0 +1,36 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a78ae;
+  .changePwd {
+    display: flex;
+    justify-content: center;
+    background-color: #7f3590;
+    width: 640px;
+    height: 480px;
+    .content {
+      background-color: #c6443e;
+      width: 420px;
+      .label_changePwd {
+        margin-top: 44px;
+        font-weight: 600;
+        font-size: 18px;
+        font-family: "PingFangSC-Semibold";
+      }
+      .input-label{
+        margin-bottom:5px;
+        font-size: 12px;
+        font-family: "PingFangSC-Semibold","SansSerif";
+      }
+      .cw-input{
+        width:100%;
+        margin-bottom:35px;
+      }
+      .cw-input-last{
+        margin-bottom:50px
+      }
+    }
+  }
+}
+
