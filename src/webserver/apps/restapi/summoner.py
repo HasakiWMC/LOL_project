@@ -30,5 +30,5 @@ class SearchSummonerAPI(MethodView):
             # print(ex)
             traceback.print_exc()
             return jsonify({"retCode": RetCode.RET_SYSTEM_ERROR})
-        print("result = %s" % result)
+        # print("result = %s" % result)
         return jsonify({"retCode": 0, "data": result})
