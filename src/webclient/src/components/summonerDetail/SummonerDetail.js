@@ -13,7 +13,7 @@ import * as summonerActions from '../../actions/summonerActions';
 
 import {Tag, Tabs, Button, Spin, Table} from 'antd';
 import '../../App.css';
-import '../../css/Summoner.css';
+import '../../scss/summoner.scss'
 import '../../css/Sprite.css';
 import '../../css/Common.css';
 

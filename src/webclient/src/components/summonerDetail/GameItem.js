@@ -4,7 +4,7 @@ import {Collapse, Tabs} from 'antd';
 import classnames from 'classnames';
 
 import {championId2Name, spellId2Name, runeId2Name, match_queues} from "../../common/constant"
-import '../../css/Summoner.css'
+import '../../scss/summoner.scss'
 import '../../css/Common.css'
 
 const Panel = Collapse.Panel;

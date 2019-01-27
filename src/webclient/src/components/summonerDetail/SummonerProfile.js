@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 
-import '../../css/Summoner.css'
+import '../../scss/summoner.scss'
 import {Tag, Button} from "antd";
 
 

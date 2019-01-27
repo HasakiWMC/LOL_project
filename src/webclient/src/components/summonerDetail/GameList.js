@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import GameItem from "./GameItem";
 
-import '../../css/Summoner.css'
+import '../../scss/summoner.scss'
 import {PropTypes} from "prop-types";
 
 

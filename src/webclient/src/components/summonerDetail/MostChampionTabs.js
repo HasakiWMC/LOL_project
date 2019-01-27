@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import MostChampionItem from './MostChampionItem'
 
-import '../../css/Summoner.css'
+import '../../scss/summoner.scss'
 import {Button, Tabs} from "antd";
 
 const TabPane = Tabs.TabPane;

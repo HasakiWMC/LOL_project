@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {rankRoman2Int} from "../../common/constant";
 
-import '../../css/Summoner.css'
+import '../../scss/summoner.scss'
 import {PropTypes} from "prop-types";
 
 
@@ -88,7 +88,7 @@ class TierBox extends Component {
                                 : (
                                     <div className="TierRankInfo">
                                         <div className="TierRank">
-                                                <span className="tierRank">
+                                                <span className="tierRank unranked">
                                                     Unranked
                                                 </span>
                                         </div>
@@ -106,7 +106,7 @@ class TierBox extends Component {
                                         <img src={flexTierImgSrc} className="Image"/>
                                     </div>
                                     <div className="TierRank">
-                                        <div className="TierRank">
+                                        <div className="tierRank">
                                             {this.changeTierSpell(RANKED_FLEX_SR.tier)}&nbsp;
                                             {this.displayRank(RANKED_FLEX_SR.tier, RANKED_FLEX_SR.rank)}
                                         </div>
@@ -134,7 +134,7 @@ class TierBox extends Component {
                                         <img src={flexTierImgSrc} className="Image"/>
                                     </div>
                                     <div className="TierRank">
-                                        <div className="TierRank">
+                                        <div className="tierRank unranked">
                                             Unranked
                                         </div>
                                     </div>
