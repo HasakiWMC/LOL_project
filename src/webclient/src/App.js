@@ -11,6 +11,7 @@ import SummonerSearch from "./components/summoner/SummonerSearch";
 import SummonerDetail from "./components/summonerDetail/SummonerDetail";
 import SummonerInputErr from "./components/summoner/SummonerInputErr";
 import ChangePwd from "./components/layout/ChangePwd";
+import './scss/frame.scss'
 
 const {Content} = Layout;
 
@@ -20,10 +21,10 @@ class App extends Component {
             <Provider store={store}>
                 <Router>
                     <div>
-                        <Layout className="layout">
+                        <Layout>
                             <LayoutHeader/>
-                            <Content style={{padding: '0 200px'}}>
-                                <div style={{background: '#fff', padding: 24, minHeight: 280}}>
+                            <Content className="content">
+                                <div className="main">
                                     <Switch>
                                         <Route exact path="/" component={SummonerSearch}/>
                                         <Route exact path="/register" component={Register}/>

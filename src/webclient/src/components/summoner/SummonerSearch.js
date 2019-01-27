@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import '../../scss/summonerSearch.scss'
 
 import {Input, Select, Form} from 'antd';
 
@@ -65,25 +66,22 @@ class SummonerSearch extends Component {
         const {getFieldDecorator} = this.props.form;
 
         return (
-            <div>
-                <div className="summoner-search"/>
-                <div style={{width: '500px', margin: '0 auto'}}>
-                    <Form>
-                        <FormItem>
-                            {
-                                getFieldDecorator('summonerName', {
-                                    rules: [
-                                        {
-                                            required: true,
-                                            pattern: new RegExp(/^[\w .]+$/, "g"),
-                                            message: "请输入正确的召唤师名称，只能包含字母、数字、空格、\".\"和\"_\""
-                                        }
-                                    ],
-                                })(searchInput)
-                            }
-                        </FormItem>
-                    </Form>
-                </div>
+            <div className="summoner-search">
+                <Form>
+                    <FormItem>
+                        {
+                            getFieldDecorator('summonerName', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        pattern: new RegExp(/^[\w .]+$/, "g"),
+                                        message: "请输入正确的召唤师名称，只能包含字母、数字、空格、\".\"和\"_\""
+                                    }
+                                ],
+                            })(searchInput)
+                        }
+                    </FormItem>
+                </Form>
             </div>
         )
     }
