@@ -46,29 +46,18 @@ module.exports = {
             }, {
                 test: /\.css$/,
                 use: [
-                    {
-                        //将当前css写入html中
-                        loader: "style-loader"
-                    }, {
-                        //将样式放到main-bundle.js中
-                        loader: "css-loader"
-                    }
+                    "style-loader",  //将当前css写入html中
+                    MiniCssExtractPlugin.loader, //分开打包css文件
+                    "css-loader"  //将样式放到main-bundle.js中
                 ]
             }, {
                 test: /\.scss$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader", // translates CSS into CommonJS
-                    options: {
-                        sourceMap: true,
-                    }
-                }, {
-                    loader: "sass-loader", // compiles Sass to CSS
-                    options: {
-                        sourceMap: true,
-                    }
-                }]
+                use: [
+                    "style-loader",  //将当前css写入html中
+                    MiniCssExtractPlugin.loader, //分开打包css文件
+                    "css-loader",  //将样式放到main-bundle.js中
+                    "sass-loader"
+                ]
             }, {
                 test: /\.(gif|png|jpg|woff|svg|ttf|eot)$/,//图片的处理
                 use: [{
